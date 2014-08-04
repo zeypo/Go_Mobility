@@ -1,0 +1,4 @@
+go_mobility_site:
+    resource: "@GoMobilitySiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

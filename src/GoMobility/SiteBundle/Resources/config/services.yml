@@ -1,0 +1,7 @@
+parameters:
+#    go_mobility_site.example.class: GoMobility\SiteBundle\Example
+
+services:
+#    go_mobility_site.example:
+#        class: %go_mobility_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
