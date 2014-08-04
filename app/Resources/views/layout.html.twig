@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        
+        <title>{% block title %}Go Mobility{% endblock %}</title>
+        <meta name="description" content="{% block meta %}{% endblock %}">
+        
+        {% block stylesheets %}
+            {% stylesheets output="css/style.css" filter="less"
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
+
+                "@GoMobilitySiteBundle/Resources/public/css/base.less"
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        {% block javascript %} {% endblock %}
+    </head>
+    <body>
+
+        {% block navigation %}
+            {% include "GoMobilitySiteBundle:Common:navigation.html.twig" %}
+        {% endblock %}
+
+        {% block body %}{% endblock %}
+
+        {% block footer %}
+            {% include "GoMobilitySiteBundle:Common:footer.html.twig" %}
+        {% endblock %}
+
+    </body>
+</html>
