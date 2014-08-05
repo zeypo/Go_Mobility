@@ -9,7 +9,6 @@
         {% block stylesheets %}
             {% stylesheets output="css/style.css" filter="less"
                 '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
-
                 "@GoMobilitySiteBundle/Resources/public/css/base.less"
             %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
@@ -20,15 +19,25 @@
     </head>
     <body>
 
-        {% block navigation %}
-            {% include "GoMobilitySiteBundle:Common:navigation.html.twig" %}
-        {% endblock %}
+        <header>
+            {% block navigation %}
+                {% include "GoMobilitySiteBundle:Common:navigation.html.twig" %}
+            {% endblock %}
+        </header>
 
         {% block body %}{% endblock %}
 
-        {% block footer %}
-            {% include "GoMobilitySiteBundle:Common:footer.html.twig" %}
-        {% endblock %}
+        <aside>
+            {% block relatedInformations %}
+                {% include "GoMobilitySiteBundle:Common:related-informations.html.twig" %}
+            {% endblock %}
+        </aside>
+
+        <footer>
+            {% block footer %}
+                {% include "GoMobilitySiteBundle:Common:footer.html.twig" %}
+            {% endblock %}
+        </footer>
 
     </body>
 </html>

@@ -1,3 +1,30 @@
+#MainController
 go_mobility_site_homepage:
     path:     /
-    defaults: { _controller: GoMobilitySiteBundle:Default:index }
+    defaults: { _controller: GoMobilitySiteBundle:Main:index }
+
+go_mobility_site_projet:
+    path:     /le-projet
+    defaults: { _controller: GoMobilitySiteBundle:Main:projet }
+
+#ExperienceController
+go_mobility_site_experiences:
+    path:     /vos-experiences
+    defaults: { _controller: GoMobilitySiteBundle:Experiences:experiences }
+
+go_mobility_site_experience:
+    path:     /vos-experiences/{id}
+    defaults: { _controller: GoMobilitySiteBundle:Experiences:experience }
+
+go_mobility_site_experiences_create:
+    path:     /cree-son-experience
+    defaults: { _controller: GoMobilitySiteBundle:Experiences:experienceCreate }
+
+#BlogController
+go_mobility_site_actualites:
+    path: /actualites
+    defaults: { _controller: GoMobilitySiteBundle:Blog:actualites }
+
+go_mobility_site_actualite:
+    path: /actualite/{id}
+    defaults: { _controller: GoMobilitySiteBundle:Blog:actualite }
