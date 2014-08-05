@@ -7,10 +7,11 @@
         <meta name="description" content="{% block meta %}{% endblock %}">
         
         {% block stylesheets %}
-            {% stylesheets output="css/style.css" filter="less"
+            {% stylesheets output="css/style.css" filter="less, cssrewrite"
                 '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
-                "@GoMobilitySiteBundle/Resources/public/less/base.less"
+                'bundles/gomobilitysite/less/base.less'
             %}
+
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
