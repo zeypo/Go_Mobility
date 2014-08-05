@@ -1,8 +1,15 @@
-<nav>
-    <ul>
-        <li><a href="{{path('go_mobility_site_homepage')}}">Home</a></li>
-        <li><a href="{{path('go_mobility_site_projet')}}">Projet</a></li>
-        <li><a href="{{path('go_mobility_site_experiences')}}">Experiences</a></li>
-        <li><a href="{{path('go_mobility_site_actualites')}}">Actualités</a></li>
-    </ul>
-</nav>
+<nav class="row">
+	<div class="col-md-4 logo">
+		<img src="{{asset('images/logo-go-mobility.svg')}}">
+	</div>
+	<div class="col-md-4">
+	    <ul>
+	        <li><a href="{{path('go_mobility_site_projet')}}">Le Projet</a></li>
+	        <li><a href="{{path('go_mobility_site_experiences')}}">Les Experiences</a></li>
+	        <li><a href="{{path('go_mobility_site_actualites')}}">Le blog</a></li>
+	    </ul>		
+	</div>
+    <div class="col-md-4 download_app">
+    	<a href="#" class="btn btn-primary btn-lg">telecharger l'application</a>	
+    </div>
+</header>
