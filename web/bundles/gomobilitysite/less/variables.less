@@ -1,7 +1,49 @@
 /* COLOR */
 
+/*blue*/
 @GmBlue 		: #7dd1eb;
-@GmLightBlue	: #c2e2ec;
+@GmLightBlue	: #ebf9fb;
+@GmDarkBlue		: #4c94aa;
+
+/*beige*/
+@GmBeige		: #f3e7d2;
+
+/*gris*/
+@GmGray			: #858688;
+@GmDarkGray		: #747474;
 
 @White  : #ffffff;
 
+
+/* MIXINS */
+
+.transition-properties(...) {
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+
+.cover-bg(@abs_path_img) {
+    background: url(@abs_path_img) center top no-repeat fixed;
+    -webkit-background-size: cover; /* pour Chrome et Safari */
+    -moz-background-size: cover; /* pour Firefox */
+    -o-background-size: cover; /* pour Opera */
+  	background-size: cover; /* version standardisée */
+}
