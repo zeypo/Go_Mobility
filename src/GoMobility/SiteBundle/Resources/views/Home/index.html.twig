@@ -1,16 +1,47 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-
-   <section>
-   		<article>
-   			<h1>La premiere applicaton eco</h1>
-   			<p>Lorem ipsum sit amet, Game adipiscing elit. Viva quis euismod dui tempus. Mauris iaculis neque neque, 2 450 membres tincidunt Proin diam sapien, L’ardeche id metus ac mus id felis urnaUt mattis feugiat</p>
-   			<ul>
-   				<li>Acceder au Jeu</li>
-   				<li>Telecharger l’application</li>
-   			</ul>
-   		</article>
-   </section>
-
+   <main role="main">
+      <section>
+      		<article class="wrapper">
+               <img src="{{asset('bundles/gomobilitysite/images/mascotte.svg')}}">
+               <div class="content">
+         			<h1>La premiere applicaton eco</h1>
+         			<p>Lorem ipsum sit amet, <b>Game</b> adipiscing elit. Viva quis euismod dui tempus.<br> Mauris iaculis neque neque, <b><span>2 450</span> membres</b> tincidunt Proin diam sapien, <b>L’ardeche</b> id metus ac mus id felis urnaUt mattis feugiat</p>
+         			<ul>
+         				<li class="bt_game">Acceder au Jeu</li>
+         				<li class="bt_app">Telecharger l’application</li>
+         			</ul>
+               </div>
+      		</article>
+            <article class="title">
+               <h2>Notre carte</h2>
+               <p>ivamus id felis urna. Suspendisse volutpat eleifend eleifend. Proin in feugiat nulla.</p>
+            </article>
+            <article class="map">
+               <div id="map"></div>
+               <ul class="nav_map">
+                 <li class="select"><img src="{{asset('bundles/gomobilitysite/images/icone-nav-map-touriste.svg')}}"><p>Touristique</p></li><li><img src="{{asset('bundles/gomobilitysite/images/icone-nav-map-sport.svg')}}"><p>Sportif</p></li><li><img src="{{asset('bundles/gomobilitysite/images/icone-nav-map-gowork.svg')}}"><p>Go to work</p></li>
+               </ul>
+            </article>
+            <article class="blog">
+               <ul>
+                  <li class="blog_container container-last_exp">                     
+                     {% include "GoMobilitySiteBundle:Common:last-experiences.html.twig" %}
+                  </li>
+                  <li class="blog_container container-last_art">
+                     {% include "GoMobilitySiteBundle:Common:last-articles.html.twig" %}
+                  </li>
+               </ul>
+            </article>
+            <article id="twitter">
+               <div class="title">
+                  <h5>Suivez-nous !</h5> <a href="https://twitter.com/LuckyCart" target="_blank">@LuckyCart</a>
+               </div>
+               <aside>
+                  <a class="twitter-timeline" width="520" height="200" href="https://twitter.com/Luckycart" data-link-color="#a2403e" data-widget-id="430670597475950593" data-tweet-limit="1"></a>
+               </aside>
+            </article>
+      </section>
+   </main>
 {% endblock %}
