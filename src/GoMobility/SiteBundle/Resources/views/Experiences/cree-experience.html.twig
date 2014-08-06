@@ -1,7 +1,18 @@
 {% extends "::layout.html.twig" %}
+{% form_theme form with 'GoMobilitySiteBundle:Form:fields.html.twig' %}
 
 {% block body %}
+    
+    <div class="row">
+        <h1>Crée son experience</h1>
+        <div class="col-md-1"></div>
+        <div style="margin-top:200px;" class="col-md-6">
+            
+            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+            </form>
 
-    <h1>Crée son experience</h1>
+        </div>
+    </div>
 
 {% endblock %}

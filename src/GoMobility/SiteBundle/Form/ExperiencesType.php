@@ -15,13 +15,18 @@ class ExperiencesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('transport')
-            ->add('start')
-            ->add('arrival')
-            ->add('description')
-            ->add('game')
-            ->add('ges')
+            ->add('email', 'email')
+            ->add('transport', 'choice', array(
+                    'choices' => array('touristique' => 'Touristique', 'sportif' => 'Sportif', 'work'=>'Go to Work')
+                ))
+            ->add('start', 'text')
+            ->add('arrival', 'text')
+            ->add('description', 'textarea')
+            ->add('game', 'checkbox', array(
+                    'label'=>'Je m\'inscrit au jeux concours',
+                    'required'  => false
+                ))
+            ->add('envoyer', 'submit');
         ;
     }
     
