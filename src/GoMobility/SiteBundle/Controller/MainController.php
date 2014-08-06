@@ -11,6 +11,7 @@ class MainController extends Controller
         return $this->render('GoMobilitySiteBundle:Home:index.html.twig');
     }
 
+
     public function projetAction()
     {
         return $this->render('GoMobilitySiteBundle:Projet:presentation.html.twig');
