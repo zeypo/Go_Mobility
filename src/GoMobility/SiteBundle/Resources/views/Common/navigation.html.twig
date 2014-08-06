@@ -1,15 +1,17 @@
-<nav class="row">
-	<div class="col-md-4 logo">
-		<img src="{{asset('bundles/gomobilitysite/images/logo-go-mobility.svg')}}">
+<nav>
+	<div class="logo">
+		<a href="#">
+			<img src="{{asset('bundles/gomobilitysite/images/logo-go-mobility.svg')}}">
+		</a>
 	</div>
-	<div class="col-md-4">
+	<div class="menu">
 	    <ul>
 	        <li><a href="{{path('go_mobility_site_projet')}}">Le Projet</a></li>
 	        <li><a href="{{path('go_mobility_site_experiences')}}">Les Experiences</a></li>
 	        <li><a href="{{path('go_mobility_site_actualites')}}">Le blog</a></li>
 	    </ul>		
 	</div>
-    <div class="col-md-4 download_app">
+    <div class="download_app">
     	<a href="#" class="btn btn-primary btn-lg">Telecharger l'application</a>	
     </div>
 </header>
