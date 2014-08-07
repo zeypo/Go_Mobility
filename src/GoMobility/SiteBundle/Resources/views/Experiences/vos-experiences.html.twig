@@ -1,7 +1,21 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
+    
+    <div style="height:200px;"></div>
+    <h1 style="text-align:center;" style="margin-bottom:50px;">Liste des experiences - <a href="{{path('go_mobility_site_experiences_register')}}">Créer son éxperience</a></h1>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        {{ flashMessage }}
+    {% endfor %}
 
-    <h1>Liste des experiences</h1>
+    {% for experience in experiences %}
+        <div class="row" style="margin-top:30px;">
+            <div class="col-md-1"></div>
+            <div class="col-md-6" style="border-bottom:1px solid #bebebe; padding-bottom:10px;">
+                <h3><a href="{{path('go_mobility_site_experience', {'id':experience.id})}}">{{experience.start}} à {{experience.arrival}} ({{experience.transport}})</a></h3>
+                <p>{{experience.description}}</p>
+            </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}

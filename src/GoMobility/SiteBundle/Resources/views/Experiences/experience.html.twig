@@ -1,7 +1,16 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
+    
+    <div style="height:200px;"></div>
+    <h1 style="text-align:center; margin-bottom:70px;">{{experience.start}} à {{experience.arrival}} ({{experience.transport}})</h1>
 
-    <h1>L'experience n°{{id}}</h1>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <p>{{experience.description}}</p>
+            <p><b>Ecrite par : {{experience.email}}</b></p>
+        </div>
+    </div>
 
 {% endblock %}

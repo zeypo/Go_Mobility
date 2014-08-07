@@ -12,13 +12,13 @@ go_mobility_site_experiences:
     path:     /vos-experiences
     defaults: { _controller: GoMobilitySiteBundle:Experiences:experiences }
 
+go_mobility_site_experiences_register:
+    path:     /vos-experiences/creer
+    defaults: { _controller: GoMobilitySiteBundle:Experiences:experienceRegister }
+
 go_mobility_site_experience:
     path:     /vos-experiences/{id}
     defaults: { _controller: GoMobilitySiteBundle:Experiences:experience }
-
-go_mobility_site_experiences_register:
-    path:     /cree-son-experience
-    defaults: { _controller: GoMobilitySiteBundle:Experiences:experienceRegister }
 
 go_mobility_site_experiences_create:
     path:     /experience-save

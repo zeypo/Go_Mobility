@@ -15,7 +15,10 @@ class ExperiencesController extends Controller
      */
     public function experiencesAction()
     {
-        return $this->render('GoMobilitySiteBundle:Experiences:vos-experiences.html.twig');
+        $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
+        $experiences = $repository->findAll();
+
+        return $this->render('GoMobilitySiteBundle:Experiences:vos-experiences.html.twig', array('experiences'=>$experiences));
     }
 
     /**
@@ -24,7 +27,10 @@ class ExperiencesController extends Controller
      */
     public function experienceAction($id)
     {
-        return $this->render('GoMobilitySiteBundle:Experiences:experience.html.twig', array('id'=>$id));
+        $repository = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
+        $experience = $repository->findOneById($id);
+        
+        return $this->render('GoMobilitySiteBundle:Experiences:experience.html.twig', array('experience'=>$experience));
     }
 
     /**
@@ -36,6 +42,9 @@ class ExperiencesController extends Controller
         return $this->render('GoMobilitySiteBundle:Experiences:cree-experience.html.twig', array('form' => $form->createView()));
     }
 
+    /**
+     * Enregistre l'experience en bdd et redirige l'internaute vers toutes les experiences
+     */
     public function experienceCreateAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -44,13 +53,12 @@ class ExperiencesController extends Controller
 
         if($form->isValid()){
             $experience = $form->getData();
-            $em->persist($experience->getEmail());
-            $em->persist($experience->getTransport());
-            $em->persist($experience->getStart());
-            $em->persist($experience->getArrival());
-            $em->persist($experience->getDescription());
-            $em->persist($experience->getGame());
+            $experience->setGes(20);
+            $em->persist($experience);
             $em->flush();
+
+            $this->get('session')->getFlashBag()->add('notice','Votre experience à bien été posté, elle est en attente de confirmation..');
+            return $this->redirect($this->generateUrl('go_mobility_site_experiences'));
         }
 
         exit;
