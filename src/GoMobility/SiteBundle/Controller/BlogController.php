@@ -11,7 +11,7 @@ class BlogController extends Controller
      */
     public function actualitesAction()
     {
-        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig');
+        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig'); 
     }
 
     /**
