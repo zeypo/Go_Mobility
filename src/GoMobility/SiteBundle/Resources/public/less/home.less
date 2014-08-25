@@ -1,0 +1,139 @@
+main{
+	section{
+		background: @GmLightBlue;
+		padding: 150px 0 0 0;
+		.wrapper{
+			padding: 100px 0 120px;
+			width: 1400px;
+			margin: 0 auto;
+			overflow: hidden;
+			position: relative;
+			img{
+				position: absolute;
+				left: 0;
+				bottom: -80px;
+				width: 40%;
+			}
+			.content{
+				width: 50%;
+				float: right;
+				font-size: 18px;
+				h1{
+					font-weight: bold;
+					font-size: 36px;
+					margin-bottom: 35px;
+				}
+				span{font-family: 'Open sans', sans-serif;}
+				ul{
+					margin-top: 80px;
+					li{
+						padding: 10px 20px;
+						display: inline-block;
+						border: 1px solid @GmBlue;
+						color: @GmBlue;
+						.border-radius(5px);
+					}
+					.bt_app{
+						background: @GmBlue;
+						color: @White;		
+						margin-left: 40px;			
+					}
+				}
+			}
+		}
+		article.title{
+			background:@White;
+			padding: 60px 0;
+			text-align: center;
+			z-index: 1000;
+			position: relative;
+			.box-shadow(0px 0px 10px rgba(0, 0, 0, 0.2));
+			h2{
+				color: @GmBlue;
+				font-size: 30px;
+				text-transform: uppercase;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
+			p{
+				font-size: 14px;
+			}
+		}
+		.map{
+			position: relative;
+			#map{
+				width: 100%;
+				height: 550px;
+			}
+			.nav_map{
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				li{
+					display: inline-block;
+					width: 33.33%;
+					padding: 0;
+					height: 100px;
+					float: left;
+					text-align: center;
+					background: rgba(125, 209, 235, 0.8);
+					color: @White;
+					font-size: 16px;
+					cursor: pointer;
+					img{
+						margin-bottom: 10px;
+					}
+					p{
+						padding-top: 65px;
+					}
+				}
+				li.select{
+					background: @GmBeige;
+					color: @GmGray;
+					div{
+						
+					}
+				}
+				li.select svg{
+					fill:@GmGray;
+				}
+				li.select:hover{
+					background: @GmBeige;
+				}
+				li:hover{
+					background: fade(@GmBeige, 60%);
+					color: @GmGray;
+				}
+				#nav_map_touriste{
+					background: url(../images/icone-nav-map-touriste.svg) center 15px no-repeat;
+				}
+				#nav_map_sport{
+					background: url(../images/icone-nav-map-sport.svg) center 15px no-repeat;	
+				}
+				#nav_map_gowork{
+					background: url(../images/icone-nav-map-gowork.svg) center 15px no-repeat;
+				}
+			}
+		}
+		#twitter{			
+			.cover-bg('../images/bg-twitter.jpg');
+			padding: 100px 0;
+			text-align: center;
+			.title{
+				background: url('../images/logo-twitter-b.png') no-repeat 280px 0;
+				padding: 0 0 50px;
+				width: 1024px;
+				margin: 0 auto;
+				h5{
+					font-family: 'Montserrat',sans-serif;
+					font-size: 24px;
+					line-height: 40px;
+					color: #fff;
+				}
+				a{
+					color: @White;
+				}
+			}
+		}
+	}
+}

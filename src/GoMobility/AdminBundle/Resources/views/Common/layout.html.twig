@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        
+        <title>{% block title %}Go Mobility{% endblock %}</title>
+        <meta name="description" content="{% block meta %}{% endblock %}">
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900|Montserrat:400,700|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        {% block stylesheets %}
+            {% stylesheets output="css/styleadmin.css" filter="less, cssrewrite"
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
+                'bundles/gomobilityadmin/less/base.less'
+            %}
+
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        {% block javascript %} {% endblock %}
+    </head>
+    <body>
+
+        <header>
+            <h1>Ceci est un header</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#" title="Dashboard">Dashboard</a></li>
+                <li><a href="#" title="Eco-Acteurs">Eco-Acteurs</a></li>
+                <li><a href="#" title="Commentaires">Commentaires</a></li>
+                <li><a href="#" title="Public">Public</a></li>
+            </ul>
+        </nav>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+parameters:
+#    go_mobility_admin.example.class: GoMobility\AdminBundle\Example
+
+services:
+#    go_mobility_admin.example:
+#        class: %go_mobility_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
