@@ -1,1 +1,122 @@
-body{background: @GaGray;}
+body{
+	background: @GaGray;
+	.content{padding-bottom: 100px; min-width: 1250px;}
+	.nb_elmt{
+		width: 900px;
+		background: @White;
+		margin: 103px auto 0;
+		border: 1px solid #d1d1d1;
+		.border-radius(2px);
+		.box-shadow(2px 2px 3px rgba(0, 0, 0, 0.1));
+		ul{
+			padding: 30px 0;
+			li{
+				display: inline-block;
+				text-align: center;
+			}
+		}
+		h4{
+			position: absolute;
+			top: -66px;
+			padding: 10px;
+			color: @White;
+			left: 50%;
+		}
+	}
+	.nb_elmt_two{
+		ul{
+			padding: 30px 0;
+			li{
+				width:445px;
+				position: relative;
+				p{
+					height: 200px;
+					width: 200px;
+					margin: 0 auto;
+					.border-radius(100px);	
+					line-height: 170px;
+					font-size: 30px;
+					font-family: 'Open Sans', sans-serif;
+				}
+			}
+			.acteur{
+				border-right: 1px solid #d1d1d1;
+				h4{
+					background: @GmGreen;
+					margin-left: -49.5px; 
+				}
+				p{
+					color: @GmGreen;
+					border: 8px solid @GmGreen;		
+				}
+			}
+			.parcours{
+				h4{
+					background: @GmBlue;
+					margin-left: -39px; 
+				}
+				p{
+					color: @GmBlue;
+					border: 8px solid @GmBlue;		
+				}
+			}
+		}
+	}
+	.nb_elmt_three{
+		position: relative;
+		h4{
+			top: -35px;
+			background: @GaDarkGray;
+			margin-left: -90.5px;
+		}
+		ul{
+			li{
+				width: 294px;
+				height: 160px;
+				vertical-align: bottom;
+				display: table-cell;
+				font-family: 'Open Sans', sans-serif;
+				.dia{
+					width: 70px;
+					margin:0 auto;
+					.dia-sk{
+						height: 150px;
+						display: table-cell;
+						vertical-align: bottom;
+						.dia-ct{
+							width: 70px;
+							margin:0 auto;
+							height: 30%; 
+							margin-top: 5px;
+						}
+					}
+				}
+				p{
+					margin-top: 5px;
+					font-weight: bold;
+					text-transform: uppercase;
+				}	
+			}
+			.sport{
+				color: @GmBlue;
+				.dia-ct{
+					background: @GmBlue;
+				}
+			}
+			.tourisme{
+				color: @GmGreen;
+				.dia-ct{
+					background: @GmGreen;
+				}
+			}
+			.gotowork{
+				color: @GmRed;
+				.dia-ct{
+					background: @GmRed;
+				}
+			}
+			.border{border-right: 1px solid #d1d1d1;}
+		}
+	}
+}
+
