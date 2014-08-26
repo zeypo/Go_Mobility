@@ -1,0 +1,54 @@
+header{	
+	position: fixed;
+	width: 100%;
+	z-index: 4000;
+	height:60px;
+	background:@GmBlue;
+	.box-shadow(0px 0px 5px rgba(0, 0, 0, 0.2));
+	.logo{
+		text-align: left;
+		padding: 14px 0 0 20px;
+		width: 20%;
+		float: left;
+	}
+	.opt{
+		float: right;
+		line-height: 54px;
+		margin: 0 15px 0 0;
+	}
+}
+nav{
+	position: fixed;
+	background: @White;
+	height:100%;
+	ul{
+		padding: 60px 0;
+		li{
+			line-height: 100px;
+			cursor:pointer;
+			font-size: 22px;
+			list-style-type: none;
+			padding: 0 60px;
+			a{
+				color: @GaDarkGray;
+			}
+			a:hover{
+				color: @GaDarkGray;
+				text-decoration: none;
+			}
+		}
+		.active{
+			font-weight: 800;
+			background: @GaGray;
+		}
+		li:hover{
+			background: #f2f2f2;
+		}
+		.active:hover{
+			background: @GaGray;
+		}
+	}
+}
+.content{
+	padding:60px 0 0 270px;
+}

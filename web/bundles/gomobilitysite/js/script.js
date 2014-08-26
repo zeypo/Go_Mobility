@@ -1,18 +1,144 @@
+google.maps.event.addDomListener(window, 'load', init);
 
-function initialize() {
-var mapOptions = {
-  center: new google.maps.LatLng(44.8152705, 4.3737854),
-  zoom: 10
-};
-var map = new google.maps.Map(document.getElementById("map"),mapOptions);
+function init() {
+    var myLatlng = new google.maps.LatLng(44.8152705, 4.3737854);
 
+    var mapOptions = {
+        zoom: 16,
+        center: myLatlng,
+        disableDefaultUI: false,
+        scrollwheel: false,
 
-google.maps.event.addListener(map, 'click', function(evt) {
-  
-});
+        styles: [
+                    {
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#fee379"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#fee379"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#f3f4f4"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#7fc8ed"
+                            }
+                        ]
+                    },
+                    {},
+                    {
+                        "featureType": "road",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "visibility": "on"
+                            },
+                            {
+                                "color": "#83cead"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "weight": 0.9
+                            },
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    }
+                ]
+            };
 
-} 
-google.maps.event.addDomListener(window, 'load', initialize);
+    var mapElement = document.getElementById('map');
+
+    var map = new google.maps.Map(mapElement, mapOptions);
+    var image = '/images/fioritures/picto_map.png';
+
+    var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: 'AWE',
+        icon : image
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+        content: 'AWE.fr - Advertising & Webmarketing  '
+    });
+
+    //infowindow.open(map,marker);
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+    });
+}
 
 
 !function(d,s,id){

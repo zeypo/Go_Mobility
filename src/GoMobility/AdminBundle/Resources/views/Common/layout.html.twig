@@ -22,17 +22,26 @@
     <body>
 
         <header>
-            <h1>Ceci est un header</h1>
+            <div class="logo">
+                <a href="{{path('go_mobility_site_homepage')}}">
+                    <img src="{{asset('bundles/gomobilitysite/images/logo-go-mobility.svg')}}">
+                </a>
+            </div>
+            <div class="opt">
+                <img src="{{asset('bundles/gomobilityadmin/images/opt.png')}}">
+            </div>
         </header>
 
         <nav>
             <ul>
-                <li><a href="#" title="Dashboard">Dashboard</a></li>
+                <li class="active"><a href="#" title="Dashboard">Dashboard</a></li>
                 <li><a href="#" title="Eco-Acteurs">Eco-Acteurs</a></li>
                 <li><a href="#" title="Commentaires">Commentaires</a></li>
                 <li><a href="#" title="Public">Public</a></li>
             </ul>
         </nav>
+
+        <script type="text/javascript" src="../bundles/gomobilityadmin/js/script.js"></script>
 
         {% block body %}{% endblock %}
     </body>
