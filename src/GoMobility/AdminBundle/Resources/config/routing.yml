@@ -1,3 +1,19 @@
+#Main Controller
 go_mobility_admin_homepage:
     path:     /admin
     defaults: { _controller: GoMobilityAdminBundle:Main:index }
+
+#Acteurs Controller
+go_mobility_admin_acteurs:
+    path:     /admin/eco-acteurs
+    defaults: { _controller: GoMobilityAdminBundle:Actors:index }
+
+#Comments Controller
+go_mobility_admin_comments:
+    path:     /admin/commentaires
+    defaults: { _controller: GoMobilityAdminBundle:Comments:index }    
+
+#Comments Controller
+go_mobility_admin_public:
+    path:     /admin/public
+    defaults: { _controller: GoMobilityAdminBundle:Public:index }    

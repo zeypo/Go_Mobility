@@ -31,14 +31,14 @@ class Users
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
@@ -48,6 +48,13 @@ class Users
      * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="points", type="decimal", nullable=false)
+     */
+    private $points;
 
 
     /**
@@ -150,5 +157,28 @@ class Users
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set points
+     *
+     * @param string $points
+     * @return Points
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return string 
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 }
