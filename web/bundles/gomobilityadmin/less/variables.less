@@ -1,0 +1,32 @@
+/* COLOR */
+
+/*bleu*/
+@GmBlue 		: #7dd1eb;
+
+/*green*/
+@GmGreen		: #91dbbc;
+
+/*red*/
+@GmRed			: #ed7c7b;
+
+/*gris*/
+@GaGray 		: #e5e5e5;
+@GaDarkGray		: #4f5050;
+@White 			: #ffffff;
+
+.box-shadow (@string) {
+	-webkit-box-shadow: @string;
+	-moz-box-shadow:    @string;
+	box-shadow:         @string;
+}
+
+
+.border-radius (@radius: 5px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:    @radius;
+	border-radius:         @radius;
+
+	-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;
+}
