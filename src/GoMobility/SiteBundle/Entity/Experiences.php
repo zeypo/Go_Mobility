@@ -277,7 +277,7 @@ class Experiences
     **/
 
     /**
-     * @ORM\ManyToOne(targetEntity="GoMobility\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="GoMobility\UserBundle\Entity\User", inversedBy="experiences")
      * @ORM\JoinColumn()
      */
     private $user;

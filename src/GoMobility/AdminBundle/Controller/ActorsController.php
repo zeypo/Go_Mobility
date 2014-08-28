@@ -10,10 +10,18 @@ class ActorsController extends Controller
 {
     public function indexAction()
     {
-        $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
-        $experiences = $repository->findAll();
+        $repositoryExperience  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
+        $repositoryUsers       = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilityUserBundle:User');
+        $experiences           = $repositoryExperience->findAll();
+
+        // Association des experiences aux users
+        foreach ($experiences as $k => $experience) {
+            $usermail = $experience->getUser()->getEmail();
+            $data[$usermail]['info'] = $experience->getUser();
+            $data[$usermail]['experiences'][$k] = $experience;
+        }
         
-        return $this->render('GoMobilityAdminBundle:Actors:index.html.twig', array('experiences'=>$experiences));
+        return $this->render('GoMobilityAdminBundle:Actors:index.html.twig', array('users'=>$data));
     }
 
     public function showAction($id)

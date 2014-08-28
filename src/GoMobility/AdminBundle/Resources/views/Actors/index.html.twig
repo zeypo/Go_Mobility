@@ -13,19 +13,24 @@
 					</tr>
                 </thead>
                 <tbody>
-                    {% for experience in experiences %}
-    					<tr>
-    						<td>
-    							<img src="{{asset('bundles/gomobilityadmin/images/default_user.png')}}">
-    							<a href="{{path('go_mobility_admin_acteur', {'id':experience.id})}}">{{experience.email}}</a>
-    						</td>
-    						<td>
-    							<p>{{experience.email}}</p>
-    						</td>
-    						<td>
-    							<a href="#">13 parcours</a>
-    						</td>
-    					</tr>
+                    {% for user in users %}
+        					<tr>
+        						<td>
+        							<img src="{{asset('bundles/gomobilityadmin/images/default_user.png')}}">
+        							<a href="{{path('go_mobility_admin_acteur', {'id':user.info.id})}}">{{user.info.email}}</a>
+        						</td>
+        						<td>
+        							<p>{{user.info.email}}</p>
+        						</td>
+        						<td>
+        							<a href="#">13 parcours</a>
+        						</td>
+                                <td class="toggle">
+                                    {% for experience in user.experiences %}
+                                        <p>{{experience.description}}</p>
+                                    {% endfor %}
+                                </td>
+        					</tr>
                     {% endfor %}
 				</tbody>
 			</table>

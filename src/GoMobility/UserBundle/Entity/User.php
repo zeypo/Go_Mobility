@@ -18,6 +18,11 @@ use Doctrine\ORM\Mapping as ORM;
 class User extends BaseUser
 {
     /**
+     * @ORM\OneToMany(targetEntity="GoMobility\SiteBundle\Entity\Experiences", mappedBy="user")
+     */
+    protected $experiences; 
+    
+    /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -30,6 +35,28 @@ class User extends BaseUser
      * @ORM\Column(name="ges", type="decimal")
      */
     private $ges = 0;
+
+    public function __construct()
+    {
+        $this->experiences = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function addExperience(\GoMobility\SiteBundle\Entity\Experiences $experience)
+    {
+        $this->experiences[] = $experience;
+        return $this;
+    }
+
+    public function removeExperience(\GoMobility\SiteBundle\Entity\Experiences $experience)
+    {
+        $this->experiences->removeElement($experience);
+    }
+
+    public function getExperiences()
+    {
+        return $this->experiences;
+    }
+
 
     /**
      * Get id
@@ -59,7 +86,7 @@ class User extends BaseUser
      *
      * @return string 
      */
-    public function getEmail()
+    public function getGes()
     {
         return $this->ges;
     }
