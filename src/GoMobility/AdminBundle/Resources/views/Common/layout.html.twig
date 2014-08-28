@@ -6,7 +6,6 @@
         <title>{% block title %}Go Mobility{% endblock %}</title>
         <meta name="description" content="{% block meta %}{% endblock %}">
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script type="text/javascript" src></script>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900|Montserrat:400,700|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         {% block stylesheets %}
             {% stylesheets output="css/styleadmin.css" filter="less, cssrewrite"
@@ -17,9 +16,11 @@
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
-
-        <script type="text/javascript" src="../bundles/gomobilityadmin/js/script.js"></script>
-        {% block javascript %} {% endblock %}
+        {% javascripts
+            'bundles/gomobilityadmin/js/script.js'
+            output="js/compiled/script.js" %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     </head>
     <body>
 
@@ -35,7 +36,7 @@
         </header>
         <nav>
             <ul>
-                <li><a href="{{path('go_mobility_admin_homepage')}}" class="active" title="Dashboard"> <img src="{{asset('bundles/gomobilityadmin/images/icon-dashbord.svg')}}">Dashboard</a></li>
+                <li><a href="{{path('go_mobility_admin_homepage')}}" title="Dashboard"> <img src="{{asset('bundles/gomobilityadmin/images/icon-dashbord.svg')}}">Dashboard</a></li>
                 <li><a href="{{path('go_mobility_admin_acteurs')}}" title="Eco-Acteurs"><img src="{{asset('bundles/gomobilityadmin/images/icon-acteur.svg')}}">Eco-Acteurs</a></li>
                 <li><a href="{{path('go_mobility_admin_comments')}}" title="Commentaires"><img src="{{asset('bundles/gomobilityadmin/images/icon-commentaire.svg')}}">Commentaires</a></li>
                 <li><a href="{{path('go_mobility_admin_public')}}" title="Public"><img src="{{asset('bundles/gomobilityadmin/images/icon-public.svg')}}">Public</a></li>

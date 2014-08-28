@@ -5,6 +5,7 @@ $(document).ready(function(){
 	function init (){
 		reziseElmt();
 		diaNb();
+		addActive();
 	}
 
 	function reziseElmt (argument) {
@@ -28,6 +29,12 @@ $(document).ready(function(){
 		$('.sport .dia-ct').height(sportNb+'%');
 		$('.tourisme .dia-ct').height(tourismeNb+'%');
 		$('.gotowork .dia-ct').height(gotoworkNb+'%');
+	}
+
+	function addActive (){
+		var url = window.location.pathname;
+		url = url.split("/");
+		urlLenght = url.length - 1; 		
 	}
 
 });

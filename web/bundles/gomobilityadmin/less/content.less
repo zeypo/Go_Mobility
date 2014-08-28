@@ -1,7 +1,7 @@
 body{
 	background: @GaGray;
 	.content{padding-bottom: 100px; min-width: 1250px;}
-	.nb_elmt{
+	.content_content{
 		width: 900px;
 		background: @White;
 		margin: 103px auto 0;
@@ -115,7 +115,52 @@ body{
 					background: @GmRed;
 				}
 			}
-			.border{border-right: 1px solid #d1d1d1;}
+			.border{border-right: 1px solid	 #d1d1d1;}
+		}
+	}
+	.bst_eco_acteur{
+		h4{
+			margin-left: -74px;
+		}
+		ul{
+			li{
+				vertical-align: middle;
+				width:515px;
+				text-align: right; 
+			}
+			.bst_pict{
+				width: 330px;
+				text-align: center;
+				img{
+					width: 150px;
+					.border-radius(200px);
+				}
+			}
+		}
+
+		.list_bst_info{
+			li{
+				width: auto;
+				display: inherit;
+				height: auto;
+				text-align: left;
+				font-style: italic;
+				span{
+					text-transform: uppercase;
+				}
+				a{
+					font-style: normal;
+					font-weight: bold;
+				}
+			}
+			.bst_name{
+				font-style:normal;
+				font-size: 16px;
+				font-weight: bold;
+				a{
+					color: @GaDarkGray;
+				}
+			}
 		}
 	}
 }
