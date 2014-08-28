@@ -17,7 +17,7 @@ class ExperiencesController extends Controller
     public function experiencesAction()
     {
         $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
-        $experiences = $repository->findAll();
+        $experiences = $repository->findByPublish(1);
 
         return $this->render('GoMobilitySiteBundle:Experiences:vos-experiences.html.twig', array('experiences'=>$experiences));
     }

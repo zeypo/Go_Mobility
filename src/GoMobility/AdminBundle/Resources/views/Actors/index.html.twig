@@ -17,17 +17,17 @@
         					<tr>
         						<td>
         							<img src="{{asset('bundles/gomobilityadmin/images/default_user.png')}}">
-        							<a href="{{path('go_mobility_admin_acteur', {'id':user.info.id})}}">{{user.info.email}}</a>
+        							<a href="#">{{user.info.email}}</a>
         						</td>
         						<td>
-        							<p>{{user.info.email}}</p>
+                                    <p>{{user.info.email}}</p>
         						</td>
         						<td>
-        							<a href="#">13 parcours</a>
+        							{{user.experiences|length}} parcours
         						</td>
                                 <td class="toggle">
                                     {% for experience in user.experiences %}
-                                        <p>{{experience.description}}</p>
+                                        <p><a href="{{path('go_mobility_admin_acteur', {'id':experience.id})}}">{{experience.description}}</a></p>
                                     {% endfor %}
                                 </td>
         					</tr>

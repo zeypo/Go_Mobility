@@ -10,9 +10,8 @@ class ActorsController extends Controller
 {
     public function indexAction()
     {
-        $repositoryExperience  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
-        $repositoryUsers       = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilityUserBundle:User');
-        $experiences           = $repositoryExperience->findAll();
+        $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
+        $experiences = $repository->findAll();
 
         // Association des experiences aux users
         foreach ($experiences as $k => $experience) {

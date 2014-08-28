@@ -6,11 +6,11 @@
 			<ul>
 				<li class="acteur">
 					<h4>eco-acteurs</h4>
-					<p>1313</p>
+					<p>{{data.users}}</p>
 				</li>
 				<li class="parcours">
 					<h4>Parcours</h4>
-					<p>12302</p>
+					<p>{{data.experiences.total}}</p>
 				</li>
 			</ul>
 		</div>
@@ -20,7 +20,8 @@
 				<li class="sport border">
 					<div class="dia">
 						<div class="dia-sk">
-							<h5>10%</h5>
+							{% set pourcentSport = data.experiences.sportif / data.experiences.total *100 %}
+							<h5>{{pourcentSport|round}}%</h5>
 							<div class="dia-ct"></div>
 						</div>
 					</div>
@@ -29,7 +30,8 @@
 				<li class="tourisme border">
 					<div class="dia">
 						<div class="dia-sk">
-							<h5>70%</h5>
+							{% set pourcentTourism = data.experiences.touristique / data.experiences.total * 100 %}
+							<h5>{{pourcentTourism|round}}%</h5>
 							<div class="dia-ct"></div>
 						</div>
 					</div>
@@ -38,7 +40,8 @@
 				<li class="gotowork">
 					<div class="dia">
 						<div class="dia-sk">
-							<h5>20%</h5>
+							{% set pourcentWork = data.experiences.work / data.experiences.total * 100 %}
+							<h5>{{pourcentWork|round}}%</h5>
 							<div class="dia-ct"></div>
 						</div>
 					</div>
@@ -62,4 +65,19 @@
 			</ul>
 		</div>
 	</div>
+{% endblock %}
+
+{% block javascript_footer %}
+	{{ parent() }}
+
+	<script>
+		$(function(){
+			var pourcentSport   = $('.sport h5').html(),
+				pourcentTourism = $('.tourisme h5').html(),
+				pourcentWork    = $('.gotowork h5').html();
+			
+			diaNb(pourcentSport, pourcentTourism, pourcentWork);
+
+		});
+	</script>
 {% endblock %}
