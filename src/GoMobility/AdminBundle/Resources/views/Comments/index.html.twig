@@ -1,7 +1,32 @@
 {% extends "GoMobilityAdminBundle:Common:layout.html.twig" %}
 
 {% block body %}
-	<div class="content">
-    	<h1>Commentaires</h1>
-    </div>
+   	<div class="content">
+   		<div class="content_content nb_elmt_three user_profil">
+			<h4>Cody Lambert</h4>
+			<img src="{{asset('bundles/gomobilityadmin/images/usr_1.jpg')}}" />
+			<div class="content-user">
+				<table>
+					<tbody>
+						<tr>
+							<td>Email :</td>
+							<td><a href="#">codylambert@gmail.com</a></td>
+						</tr>
+						<tr>
+							<td>Adresse :</td>
+							<td>05 rue Thorel</td>
+						</tr>
+						<tr>
+							<td>Ville :</td>
+							<td>Paris</td>
+						</tr>
+						<tr>
+							<td>Pays :</td>
+							<td>France</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+   </div>
 {% endblock %}

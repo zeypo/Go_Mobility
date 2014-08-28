@@ -6,18 +6,23 @@
         <title>{% block title %}Go Mobility{% endblock %}</title>
         <meta name="description" content="{% block meta %}{% endblock %}">
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900|Montserrat:400,700|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
         {% block stylesheets %}
             {% stylesheets output="css/style.css" filter="less, cssrewrite"
                 '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
                 'bundles/gomobilitysite/less/base.less'
             %}
-
-                <link rel="stylesheet" href="{{ asset_url }}" />
+            <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
+            {% javascripts
+                'bundles/gomobilitysite/js/script.js'
+                'bundles/gomobilitysite/js/slide.js'
+                output="js/compiled/scripts.js" %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
         {% endblock %}
 
-        {% block javascript %} {% endblock %}
     </head>
     <body>
 
@@ -34,7 +39,5 @@
                 {% include "GoMobilitySiteBundle:Common:footer.html.twig" %}
             {% endblock %}
         </footer>
-        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script type="text/javascript" src="../bundles/gomobilitysite/js/script.js"></script>
     </body>
 </html>

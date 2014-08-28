@@ -1,5 +1,39 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-    <h3>Page de présentation du projet</h3>
+	<div class="content">
+	    <div class="presentation">
+	    	<div class="wrapper">
+		    	<ul class="slide_first_presentation">
+		    		<li class="presentation_first_part slide_content">
+				    	<div class="slide_phone">
+				    		<img src="{{asset('bundles/gomobilitysite/images/bg_slide_phone.png')}}">
+				    		<div id="slider">
+					    		<ul>
+					    			<li><img src="{{asset('bundles/gomobilitysite/images/slide_phone_1.png')}}"></li>
+					    			<li><img src="{{asset('bundles/gomobilitysite/images/slide_phone_2.png')}}"></li>
+					    			<li><img src="{{asset('bundles/gomobilitysite/images/slide_phone_3.png')}}"></li>
+					    		</ul>
+				    		</div>
+				    	</div>
+				    	<div class="slide_control">
+				    		<ul>
+				    		</ul>
+				    	</div>
+		    		</li>
+		    		<li class="presentation_second_part slide_content">
+		    			<h5>Vitesse et puissance avec un superbe écran 5 pouces</h5>
+						<h6>Avec Android™ 4.4, KitKat®</h6>
+
+						<p>Le Nexus 5 est bien plus qu'un simple téléphone 5 pouces. À la pointe de la technologie, il offre un design élégant et épuré, doté d'un écran Full HD d'une qualité à couper le souffle. De plus, il est disponible en noir et blanc.</p>
+
+						<p>Avec les toutes nouvelles fonctionnalités photo et vidéo, saisissez les petits et les grands moments comme jamais auparavant. Et grâce à la toute dernière version d'Android, le Nexus 5 est plus rapide et plus puissant que jamais.<p>
+
+						<p><span>Acheter à partir de 349 €</span></p>
+		    		</li>
+		    	</ul>
+	    	</div>
+	    	<div class="bg_paysage"></div>
+	    </div>
+   	</div>
 {% endblock %}

@@ -1,0 +1,85 @@
+.content{
+	.presentation{
+		.wrapper{
+			background: url(../images/border_bottom_first_slider.png) repeat-x bottom;
+		}
+		.slide_first_presentation{
+			width: 900px;
+			margin: 0 auto;
+			padding: 0 0 100px;
+			.slide_content{
+				display: inline-block;
+				width: 448px;
+				background: @White;
+			}
+			.presentation_first_part{
+				text-align: center;
+				padding: 150px 0 0 0; 
+				.slide_phone{
+					width: 294px;
+					margin: 0 auto;
+					position: relative;
+					overflow: hidden;
+					img{
+						position: relative;
+						z-index: 999;
+					}
+					#slider{
+						position: absolute;
+						top: 0;
+						ul{
+							position: relative;
+							top: 55px;
+							z-index: 998;
+							width: 802px;
+							padding: 0 20px;
+							li{
+								float: left;
+								display: inline-block;
+							}
+						}
+					}
+				}
+				.slide_control{
+					ul{
+						li{
+							background: @GmDarkGray;
+							display: inline-block;
+							width: 10px;
+							height: 10px;
+							margin: 0 5px;
+							.border-radius(10px);
+							opacity: 0.5;
+						}
+						.active{
+							opacity: 1;
+						}
+					}
+				}
+			}
+			.presentation_second_part{
+				background: @White;
+				vertical-align: top;
+				padding-top: 300px;
+				h5{
+					font-size: 20px;
+					margin-bottom: 20px;
+				}
+				h6{
+					margin-bottom: 20px;
+				}
+				p{
+					margin-bottom: 20px;
+					span{
+						color: @GmBlue;
+					}
+				}
+			}
+
+		}
+		.bg_paysage{
+			background: url(../images/presentation-background.jpg) repeat-x bottom;
+			padding: 100px 0; 
+		}
+	}
+}
