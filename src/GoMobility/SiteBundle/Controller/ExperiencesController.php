@@ -3,6 +3,7 @@
 namespace GoMobility\SiteBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use GoMobility\SiteBundle\Form\ExperiencesType;
@@ -57,17 +58,19 @@ class ExperiencesController extends Controller
             $experience = $form->getData();
             $email      = $experience->getEmail();
             
-            $user = $userManager->findUserByUsernameOrEmail($email); 
+            $user = $userManager->findUserByUsername($email);
 
             if(!$user) {
                 $user = $userManager->createUser();
                 $user->setUsername($email);
                 $user->setEmail($email);
-                $user->setPassword(' ');
+                $user->setEmailCanonical(strtolower($email));
+                $user->setPassword('0000');
                 $user->setEnabled(true);
                 $user->addRole('IS_AUTHENTICATED_ANONYMOUSLY');
 
                 $userManager->updateUser($user);
+
             }
 
             $experience->setGes(20);
