@@ -47,13 +47,31 @@ class ExperiencesController extends Controller
      */
     public function experienceCreateAction()
     {
+        $userManager = $this->get('fos_user.user_manager');
         $em = $this->getDoctrine()->getEntityManager();
+        
         $form = $this->get('form.factory')->create(new ExperiencesType(), new Experiences());
         $form->handleRequest($this->getRequest());
 
         if($form->isValid()){
             $experience = $form->getData();
+            $email      = $experience->getEmail();
+            
+            $user = $userManager->findUserByUsernameOrEmail($email); 
+
+            if(!$user) {
+                $user = $userManager->createUser();
+                $user->setUsername($email);
+                $user->setEmail($email);
+                $user->setPassword(' ');
+                $user->setEnabled(true);
+                $user->addRole('IS_AUTHENTICATED_ANONYMOUSLY');
+
+                $userManager->updateUser($user);
+            }
+
             $experience->setGes(20);
+            $experience->setUser($user);
             $em->persist($experience);
             $em->flush();
 

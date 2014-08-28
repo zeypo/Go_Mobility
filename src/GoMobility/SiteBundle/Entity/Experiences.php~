@@ -281,27 +281,4 @@ class Experiences
      * @ORM\JoinColumn()
      */
     private $user;
-
-    /**
-     * Set user
-     *
-     * @param \GoMobility\UserBundle\Entity\User $user
-     * @return Experiences
-     */
-    public function setUser(\GoMobility\UserBundle\Entity\User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \GoMobility\UserBundle\Entity\User 
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 }
