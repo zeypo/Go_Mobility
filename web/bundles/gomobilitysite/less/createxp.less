@@ -1,0 +1,115 @@
+.content_creat{
+	padding: 140px 0 100px 0; 
+	text-align: center;
+	h1{
+		text-transform: uppercase;
+		color: @GmBlue;
+		font-size: 18px;
+		margin-bottom: 30px;
+	}
+	.step_control{
+		position: relative;
+		li{
+			display: inline-block;
+			font-family: 'Open sans', sans-serif;
+			font-size: 20px;
+			padding: 5px 15px;
+			position: relative;
+			margin: 0 40px;
+			z-index: 444;
+			background: @GmBlue;
+			color:@White;
+			opacity: 0.2;
+			margin-bottom: 50px;
+			.border-radius(30px);
+		}
+		.active{
+			opacity: 1;
+		}	
+		.bg_step_control{
+			position: absolute;
+			z-index: 443;
+			height: 3px;
+			left: 50%;
+			margin: 0;
+			background: @White;
+			width: 250px;
+			margin-left: -125px;
+			opacity: 1;
+			top: 18px;
+			padding:0;
+			.border-radius(0);
+			div{
+				top: 0;
+				left: 0;
+				position: absolute;
+				height: 100%;
+				width: 0px;
+				background: @GmBlue;
+			}
+		}
+	}
+	.content_content_creat{
+		form{overflow: hidden;}
+		ul{
+			position: relative;
+			.step{
+				position: relative;
+				display: inline-block;
+				list-style-type: none;
+				float: left;
+				text-align: left;
+				overflow: hidden;
+				.content_step{
+					width: 600px;	
+					margin: 0 auto;	
+					position: relative;
+					height: 200px;
+					p{
+						margin-bottom: 4px;
+					}
+					a{
+						margin-top: 20px;
+						color: @GmBlue;
+						border: 1px solid @GmBlue;
+						position: absolute;
+						bottom: 0;
+						.border-radius(3px);
+					}
+					a.step_suiv{
+						float: right;
+						padding: 5px 25px 5px 5px;
+						background: url(../images/arrow_step_suiv.png) no-repeat center right;
+						right: 0;
+					}
+					a.step_pres{
+						float: left;
+						padding: 5px 5px 5px 25px;
+						background: url(../images/arrow_step_pres.png) no-repeat center left;
+						left: 0;
+					}
+					a:hover{
+						color:@GmBlue;
+					}
+					input[type="email"],input[type="text"],textarea,select{
+						margin-bottom: 10px;
+						background: @GmLigthGray;
+						border: none;
+					    width: 100%;
+					    resize: none;
+					    padding:5px;
+					}
+					select {
+					    background: @GmLigthGray url(../images/arrow_select.png) no-repeat center right;
+					    -webkit-appearance: none;
+					    -moz-appearance: none;
+					    -ms-appearance: none;
+					    -o-appearance: none;
+					    appearance: none;
+					    .border-radius(0px);
+					}
+				}
+			}
+		}
+	}
+}
