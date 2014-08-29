@@ -15,6 +15,11 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class Articles
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="GoMobility\SiteBundle\Entity\Keyword", cascade={"persist"})
+     */
+    private $keywords;
+    
     private $temp;
     
     /**
@@ -77,6 +82,16 @@ class Articles
      * @Assert\File(maxSize="6000000")
      */
     public $file;
+
+
+
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+        $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     public function getAbsolutePath()
     {
@@ -158,12 +173,6 @@ class Articles
         if ($file = $this->getAbsolutePath()) {
             unlink($file);
         }
-    }
-
-
-    public function __construct()
-    {
-        $this->date = new \DateTime();
     }
 
 
@@ -346,5 +355,38 @@ class Articles
     public function getFile()
     {
         return $this->file;
+    }
+
+    /**
+     * Add keywords
+     *
+     * @param \GoMobility\SiteBundle\Entity\Keyword $keywords
+     * @return Articles
+     */
+    public function addKeyword(\GoMobility\SiteBundle\Entity\Keyword $keywords)
+    {
+        $this->keywords[] = $keywords;
+
+        return $this;
+    }
+
+    /**
+     * Remove keywords
+     *
+     * @param \GoMobility\SiteBundle\Entity\Keyword $keywords
+     */
+    public function removeKeyword(\GoMobility\SiteBundle\Entity\Keyword $keywords)
+    {
+        $this->keywords->removeElement($keywords);
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 }

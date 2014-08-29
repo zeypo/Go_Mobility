@@ -4,15 +4,24 @@ namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Articles
  *
  * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="GoMobility\SiteBundle\Entity\ArticlesRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Articles
 {
+    /**
+     * @ORM\ManyToMany(targetEntity="GoMobility\SiteBundle\Entity\Keyword", cascade={"persist"})
+     */
+    private $keywords;
+    
+    private $temp;
+    
     /**
      * @var integer
      *
@@ -67,21 +76,31 @@ class Articles
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    public $imagePath;
+    public $path;
 
     /**
      * @Assert\File(maxSize="6000000")
      */
     public $file;
 
+
+
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+        $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
     public function getAbsolutePath()
     {
-        return null === $this->imagePath ? null : $this->getUploadRootDir().'/'.$this->imagePath;
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
     {
-        return null === $this->imagePath ? null : $this->getUploadDir().'/'.$this->imagePath;
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
     }
 
     protected function getUploadRootDir()
@@ -94,48 +113,66 @@ class Articles
         return 'bundles/gomobilitysite/images/blog';
     }
 
+   /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        if (isset($this->path)) {
+            $this->temp = $this->path;
+            $this->path = null;
+        } else {
+            $this->path = 'bundles/gomobilitysite/images/blog';
+        }
+    }
+
     /**
-    * @ORM\prePersist
-    */
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
     public function preUpload()
     {
-      if (null !== $this->file) {
-        // do whatever you want to generate a unique name
-        $this->imagePath = uniqid().'.'.$this->file->guessExtension();
-      }
+        if (null !== $this->getFile()) {
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+        }
     }
-     
+
     /**
-    * @ORM\postPersist
-    */
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
     public function upload()
     {
-      if (null === $this->file) {
-        return;
-      }
-     
-      // if there is an error when moving the file, an exception will
-      // be automatically thrown by move(). This will properly prevent
-      // the entity from being persisted to the database on error
-      $this->file->move($this->getUploadRootDir(), $this->imagePath);
-     
-      unset($this->file);
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->path);
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            //unlink($this->getUploadRootDir().'/'.$this->temp);
+            $this->temp = null;
+        }
+        $this->file = null;
     }
-     
+
     /**
-    * @ORM\postRemove
-    */
+     * @ORM\PostRemove()
+     */
     public function removeUpload()
     {
-      if ($file = $this->getAbsolutePath()) {
-        unlink($file);
-      }
-    }
-
-
-    public function __construct()
-    {
-        $this->date = new \DateTime();
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
     }
 
 
@@ -288,25 +325,35 @@ class Articles
     }
 
     /**
-     * Set imagePath
+     * Set path
      *
-     * @param string $imagePath
+     * @param string $path
      * @return Articles
      */
-    public function setImagePath($imagePath)
+    public function setPath($path)
     {
-        $this->imagePath = $imagePath;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Get imagePath
+     * Get path
      *
      * @return string 
      */
-    public function getImagePath()
+    public function getPath()
     {
-        return $this->imagePath;
+        return $this->path;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }
