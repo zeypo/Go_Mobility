@@ -11,7 +11,10 @@ class BlogController extends Controller
      */
     public function actualitesAction()
     {
-        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig'); 
+        $em = $this->getDoctrine()->getEntityManager();
+        $articles =  $em->getRepository('GoMobilitySiteBundle:Articles')->findByStatus(1);
+        
+        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig', array('articles'=>$articles));
     }
 
     /**

@@ -1,0 +1,10 @@
+{% extends "GoMobilityAdminBundle:Common:layout.html.twig" %}
+{% form_theme form with 'GoMobilitySiteBundle:Form:fields.html.twig' %}
+
+{% block body %}
+    <div class="contents" style="padding-top:100px; padding-left:420px; width:85%;">
+        <form class="form-horizontal" role="form" action="{{ path('go_mobility_admin_public_update', {'id':article.id})}}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+        </form>
+    </div>
+{% endblock %}

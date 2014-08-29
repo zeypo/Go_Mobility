@@ -3,8 +3,6 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Articles
@@ -54,7 +52,7 @@ class Articles
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
@@ -62,6 +60,11 @@ class Articles
      * @ORM\OneToOne(targetEntity="GoMobility\SiteBundle\Entity\Document", cascade={"persist"})
      */
     private $document;
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
 
     /**

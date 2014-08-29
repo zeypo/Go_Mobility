@@ -1,43 +1,33 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-	<div class="content_blog">
-    	<div class="content_content_blog">
-    		<ul>
-    			<li>
-    				<img src="{{asset('bundles/gomobilitysite/images/list_img_article.jpg')}}">   
-    				<div class="title">
-	    				<h4>Tritre de l'article</h4>
-	    				<div class="fb">
-							<img src="{{asset('bundles/gomobilitysite/images/lik_bt.jpg')}}">   
-	    				</div>
-    				</div>
-    				<p>Descente guidée de l’Ardèche en soirée. Profitez de la quiétude des fin de journée pour découvrir la rivière redevenue sauvage...</p>
-    				<a href="{{path('go_mobility_site_actualite', {'id':1})}}">Voir plus</a>
-    			</li>
-    			<li>
-    				<img src="{{asset('bundles/gomobilitysite/images/list_img_article_2.jpg')}}">
-    				<div class="title">   
-	    				<h4>Tritre de l'article</h4>
-	    				<div class="fb">
-							<img src="{{asset('bundles/gomobilitysite/images/lik_bt.jpg')}}">   
-	    				</div>
-    				</div>
-    				<p>Les sentiers d'été ont disparu sous la neige...C'est le moment de chausser les raquettes à neige, place aux panoramas et au hors pistes !</br>
-					La montagne hivernale est un autre monde à découvrir, les possibilités sont grandes... pour tous les goûts et tous les niveaux...</p>
-					<a href="#">Voir plus</a>
-    			</li>
-    		</ul>
-    	</div>
-    	<div class="pagination">
-    		<ul>
-    			<li><a href="#" class="	">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-    			<li class="last_page"><a href="#">derniere page</a></li>
-    		</ul>
-    	</div>
+    <div class="content_blog">
+        <div class="content_content_blog">
+            <ul>
+                {% for article in articles %}
+                    <li>
+                        <img src="{{asset('bundles/gomobilitysite/images/list_img_article.jpg')}}">   
+                        <div class="title">
+                            <h4>{{article.title}}</h4>
+                            <div class="fb">
+                                <img src="{{asset('bundles/gomobilitysite/images/lik_bt.jpg')}}">   
+                            </div>
+                        </div>
+                        <p>{{article.content}}</p>
+                        <a href="{{path('go_mobility_site_actualite', {'id':article.id})}}">Voir plus</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="pagination">
+            <ul>
+                <li><a href="#" class=" ">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li class="last_page"><a href="#">derniere page</a></li>
+            </ul>
+        </div>
     </div>
 {% endblock %}

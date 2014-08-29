@@ -19,7 +19,7 @@ class ArticlesType extends AbstractType
             ->add('author')
             ->add('content')
             ->add('status')
-            ->add('document', 'file', array('label' => 'Image', 'required' => false))
+            ->add('document', 'file', array('label' => 'Image', 'required' => false, 'data_class'=>null))
             ->add('enregistrer', 'submit');
         ;
     }

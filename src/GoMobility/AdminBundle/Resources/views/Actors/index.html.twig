@@ -1,39 +1,39 @@
 {% extends "GoMobilityAdminBundle:Common:layout.html.twig" %}
 
 {% block body %}
-   	<div class="content">
-   		<div class="content_content nb_elmt_three bst_eco_acteur">
-			<h4>Eco-acteurs</h4>
-			<table>
-				<thead>
-					<tr class="tr_org">
-						<th>Nom</th>
-						<th>Email</th>
-						<th>Parcours</th>
-					</tr>
+    <div class="content">
+        <div class="content_content nb_elmt_three bst_eco_acteur">
+            <h4>Eco-acteurs</h4>
+            <table>
+                <thead>
+                    <tr class="tr_org">
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Parcours</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {% for user in users %}
-        					<tr>
-        						<td>
-        							<img src="{{asset('bundles/gomobilityadmin/images/default_user.png')}}">
-        							<a href="#">{{user.info.email}}</a>
-        						</td>
-        						<td>
+                            <tr>
+                                <td>
+                                    <img src="{{asset('bundles/gomobilityadmin/images/default_user.png')}}">
+                                    <a href="#">{{user.info.email}}</a>
+                                </td>
+                                <td>
                                     <p>{{user.info.email}}</p>
-        						</td>
-        						<td>
-        							{{user.experiences|length}} parcours
-        						</td>
+                                </td>
+                                <td>
+                                    {{user.experiences|length}} parcours
+                                </td>
                                 <td class="toggle">
                                     {% for experience in user.experiences %}
                                         <p><a href="{{path('go_mobility_admin_acteur', {'id':experience.id})}}">{{experience.description}}</a></p>
                                     {% endfor %}
                                 </td>
-        					</tr>
+                            </tr>
                     {% endfor %}
-				</tbody>
-			</table>
-		</div>
+                </tbody>
+            </table>
+        </div>
    </div>
 {% endblock %}

@@ -13,7 +13,10 @@ class PublicController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GoMobilityAdminBundle:Public:index.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $articles =  $em->getRepository('GoMobilitySiteBundle:Articles')->findAll();
+        
+        return $this->render('GoMobilityAdminBundle:Public:index.html.twig', array('articles'=>$articles));
     }
 
     /**
@@ -38,16 +41,50 @@ class PublicController extends Controller
         if($form->isValid()){
             $article = $form->getData();
 
-            print_r($article);exit;
-
-            $em->persist($experience);
+            $em->persist($article);
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice','Votre experience à bien été posté, elle est en attente de confirmation..');
-            return $this->redirect($this->generateUrl('go_mobility_site_experiences'));
+            return $this->redirect($this->generateUrl('go_mobility_admin_public'));
         } else {
             throw new \Exception("Formulaire non valide");
             
         }
+    }
+
+    public function showAction($id)
+    {
+        $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Articles');
+        $article = $repository->findOneById($id);
+        $form = $this->get('form.factory')->create(new ArticlesType(), $article);
+
+        
+        return $this->render('GoMobilityAdminBundle:Public:update.html.twig', array('form' => $form->createView(), 'article'=>$article));
+    }
+
+    /**
+     * Permet de mettre à jour un article
+     */
+    public function updateAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $repository = $em->getRepository('GoMobilitySiteBundle:Articles');
+        $experience = $repository->find($id);
+
+        if (!$experience) {
+            throw $this->createNotFoundException('Il n\'y a pas d\'experience correspondant à l\'id : '.$id);
+        }
+        
+        $form = $this->get('form.factory')->create(new ArticlesType(), $experience);
+        $form->handleRequest($this->getRequest());
+
+        if($form->isValid()){
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('notice','L\'article à bien été mise à jour.');
+            return $this->redirect($this->generateUrl('go_mobility_admin_public'));
+        }
+
+        exit;
     }
 }

@@ -34,3 +34,11 @@ go_mobility_admin_public_create:
 go_mobility_admin_public_save:
     path:     /admin/public/sauvegarder
     defaults: { _controller: GoMobilityAdminBundle:Public:save }
+
+go_mobility_admin_public_show:
+    path:     /admin/public/article/{id}
+    defaults: { _controller: GoMobilityAdminBundle:Public:show }
+
+go_mobility_admin_public_update:
+    path:     /admin/public/update/{id}
+    defaults: { _controller: GoMobilityAdminBundle:Public:update }

@@ -186,4 +186,27 @@ class Articles
     {
         return $this->status;
     }
+
+    /**
+     * Set document
+     *
+     * @param \GoMobility\SiteBundle\Entity\Document $document
+     * @return Articles
+     */
+    public function setDocument(\GoMobility\SiteBundle\Entity\Document $document = null)
+    {
+        $this->file = $document;
+
+        return $this;
+    }
+
+    /**
+     * Get document
+     *
+     * @return \GoMobility\SiteBundle\Entity\Document 
+     */
+    public function getDocument()
+    {
+        return $this->document;
+    }
 }
