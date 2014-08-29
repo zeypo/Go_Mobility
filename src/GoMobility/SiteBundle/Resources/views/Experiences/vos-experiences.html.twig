@@ -2,6 +2,10 @@
 
 {% block body %}
     
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        {{ flashMessage }}
+    {% endfor %}
+
     <div class="content_experiences">
         <ul class="org-list">
             <li class="green"><a href="#">TOURISME</a></li>
@@ -27,7 +31,7 @@
                                 </li>
                                 <li> {{experience.arrival}}</li>
                             </ul>
-                            <p>143 Pt</p>
+                            <p>{{experience.ges}} Pt</p>
                         </a>
                     </li>
                 {% endfor %}
@@ -73,10 +77,5 @@
             </ul>
         </div>
     </div>
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        {{ flashMessage }}
-    {% endfor %}
-
-    
 
 {% endblock %}

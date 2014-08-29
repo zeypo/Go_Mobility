@@ -84,6 +84,5 @@ class ExperiencesController extends Controller
             throw new \Exception("Formulaire non valide");
             
         }
-
     }
 }

@@ -25,4 +25,12 @@ go_mobility_admin_comments:
 #Public Controller
 go_mobility_admin_public:
     path:     /admin/public
-    defaults: { _controller: GoMobilityAdminBundle:Public:index }    
+    defaults: { _controller: GoMobilityAdminBundle:Public:index }
+
+go_mobility_admin_public_create:
+    path:     /admin/public/creer
+    defaults: { _controller: GoMobilityAdminBundle:Public:create }
+
+go_mobility_admin_public_save:
+    path:     /admin/public/sauvegarder
+    defaults: { _controller: GoMobilityAdminBundle:Public:save }

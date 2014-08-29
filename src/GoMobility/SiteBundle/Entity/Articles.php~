@@ -57,11 +57,9 @@ class Articles
     private $status;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string")
+     * @ORM\OneToOne(targetEntity="GoMobility\SiteBundle\Entity\Document", cascade={"persist"})
      */
-    private $image;
+    private $document;
 
 
     /**

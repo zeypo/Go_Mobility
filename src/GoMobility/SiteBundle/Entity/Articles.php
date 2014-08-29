@@ -3,6 +3,8 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Articles
@@ -57,11 +59,9 @@ class Articles
     private $status;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string")
+     * @ORM\OneToOne(targetEntity="GoMobility\SiteBundle\Entity\Document", cascade={"persist"})
      */
-    private $image;
+    private $document;
 
 
     /**
@@ -190,25 +190,25 @@ class Articles
     }
 
     /**
-     * Set image
+     * Set document
      *
-     * @param string $image
+     * @param \GoMobility\SiteBundle\Entity\Document $document
      * @return Articles
      */
-    public function setImage($image)
+    public function setDocument(\GoMobility\SiteBundle\Entity\Document $document = null)
     {
-        $this->image = $image;
+        $this->file = $document;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get document
      *
-     * @return string 
+     * @return \GoMobility\SiteBundle\Entity\Document 
      */
-    public function getImage()
+    public function getDocument()
     {
-        return $this->image;
+        return $this->document;
     }
 }
