@@ -9,3 +9,7 @@ comment_showcomments:
 comment_create:
     path:     /comments/create/{articleid}
     defaults: { _controller: GoMobilityCommentBundle:Main:create }
+
+comment_publish:
+    path:     /comments/publish/{id}
+    defaults: { _controller: GoMobilityCommentBundle:Main:publish }

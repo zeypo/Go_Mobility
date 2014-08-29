@@ -64,4 +64,39 @@ class MainController extends Controller
             
         }
     }
+
+    /**
+     * Autorise la publication du commentaire
+     */
+    public function publishAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $comment   = $em->getRepository('GoMobilityCommentBundle:Commentaire')->find($id);
+        $comment->setPublish(1);
+
+        $em->flush();
+
+        $request = $this->getRequest();
+
+        $ruta = $this->getRefererRoute();
+        $locale = $request->get('_locale');
+        $url = $this->get('router')->generate($ruta, array('_locale' => $locale));
+
+        return $this->redirect($url);
+    }
+
+    private function getRefererRoute()
+    {
+        $request = $this->getRequest();
+
+        $referer = $request->headers->get('referer');
+        $lastPath = substr($referer, strpos($referer, $request->getBaseUrl()));
+        $lastPath = str_replace($request->getBaseUrl(), '', $lastPath);
+
+        $matcher = $this->get('router')->getMatcher();
+        $parameters = $matcher->match($lastPath);
+        $route = $parameters['_route'];
+
+        return $route;
+    }
 }
