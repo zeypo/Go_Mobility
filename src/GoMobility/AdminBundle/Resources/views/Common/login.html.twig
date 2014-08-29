@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        
+        <title>{% block title %}Go Mobility{% endblock %}</title>
+        <meta name="description" content="{% block meta %}{% endblock %}">
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900|Montserrat:400,700|Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        {% block stylesheets %}
+            {% stylesheets output="css/styleadmin.css" filter="less, cssrewrite"
+                '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
+                'bundles/gomobilityadmin/less/base.less'
+            %}
+
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        {% javascripts
+            'bundles/gomobilityadmin/js/script.js'
+            output="js/compiled/script.js" %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </head>
+    <body>
+        <div class="content_content_admin">
+            <div class="header_admin">
+                <a href="{{path('go_mobility_site_homepage')}}">
+                    <img src="{{asset('bundles/gomobilitysite/images/logo-go-mobility.svg')}}">
+                </a>
+            </div>
+            <div class="content_admin">
+                {% block fos_user_content %}{% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

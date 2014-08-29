@@ -1,0 +1,27 @@
+.article_bg{
+	height: 600px;
+	-webkit-filter: blur(4px);
+	-moz-filter: blur(4px);
+	-o-filter: blur(4px);
+	-ms-filter: blur(4px);
+
+	filter: blur(4px);
+	background: url(../images/list_img_article.jpg) no-repeat center fixed; 
+	  -webkit-background-size: cover; /* pour Chrome et Safari */
+	  -moz-background-size: cover; /* pour Firefox */
+	  -o-background-size: cover; /* pour Opera */
+	  background-size: cover; /* version standardisée */
+}
+
+.content_blog_article{
+	background: @White url('../images/presentation-background-article.jpg') repeat-x bottom;
+	position: relative;
+	.content_content_article{
+		background: @White;
+		width: 900px;
+		margin: 0 auto;
+		position: relative;
+		bottom: 300px;
+		min-height: 300px;
+	}
+}
