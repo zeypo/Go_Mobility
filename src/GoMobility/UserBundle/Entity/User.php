@@ -56,7 +56,7 @@ class User extends BaseUser
     /**
      * Get ges
      *
-     * @return string 
+         * @return string 
      */
     public function getGes()
     {

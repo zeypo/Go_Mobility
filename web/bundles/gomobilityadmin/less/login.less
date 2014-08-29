@@ -1,0 +1,62 @@
+body{
+	.content_content_admin{
+		width: 400px;
+		background: @White;
+		position: absolute;
+		left: 50%;
+		margin-left: -200px;
+		top: 50%;
+		margin-top: -200px;
+		border: 1px solid #d1d1d1;
+		.border-radius(2px);
+		.box-shadow(2px 2px 3px rgba(0, 0, 0, 0.1));
+		ul{
+			padding: 30px 0;
+			li{
+				display: inline-block;
+				text-align: center;
+			}
+		}
+		h4{
+			position: absolute;
+			top: -66px;
+			padding: 10px;
+			color: @White;
+			left: 50%;
+		}
+	}
+	.header_admin{
+		background: @GmBlue;	
+		padding: 20px;
+		text-align: center;
+	}	
+	.content_admin{
+		overflow: hidden;
+		padding: 0 39px 20px;
+		input[type="text"],input[type="password"]{
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 15px;
+			border: none;
+			background: #f1f1f1;
+			float: left;
+		}
+		.check{
+			float: left;
+			padding: 3px 0 0 0;
+			label{
+				font-weight: lighter;
+			}
+		}
+		input[type="submit"]{
+			float: right;
+			background: @White;
+			border: 1px solid @GmBlue;
+			color: @GmBlue;
+		}
+		input[type="submit"]:hover{
+			background: @GmBlue;
+			color: @White;
+		}
+	}
+}

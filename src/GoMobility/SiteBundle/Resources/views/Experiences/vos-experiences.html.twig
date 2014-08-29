@@ -2,20 +2,81 @@
 
 {% block body %}
     
-    <div style="height:200px;"></div>
-    <h1 style="text-align:center;" style="margin-bottom:50px;">Liste des experiences - <a href="{{path('go_mobility_site_experiences_register')}}">Créer son éxperience</a></h1>
+    <div class="content_experiences">
+        <ul class="org-list">
+            <li class="green"><a href="#">TOURISME</a></li>
+            <li class="blue"><a href="#">SPORT</a></li>
+            <li class="red"><a href="#">GO TO WORK</a></li>
+            <li class="bt_add_exp"><a href="{{path('go_mobility_site_experiences_register')}}"><span>+</span> Ajouter un experience</a></li>
+        </ul>
+       
+        <div class="content_list">
+            <ul>
+                {% for experience in experiences %}
+                    <li class="{{experience.transport}} traject_entity">
+                        <a href="{{path('go_mobility_site_experience', {'id':experience.id})}}">
+                            <img src="{{asset('bundles/gomobilitysite/images/usr_1.jpg')}}">                                
+                            <ul>
+                                <li>{{experience.start}}</li>
+                                <li class="trajet">
+                                    <p>140 km</p>
+                                    <div class="bg_list">
+                                        <div class="start"></div>
+                                        <div class="arrival"></div>
+                                    </div>
+                                </li>
+                                <li> {{experience.arrival}}</li>
+                            </ul>
+                            <p>143 Pt</p>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="mot_clefs">
+        <div class="mc_content">
+            <h4>Mots clefs</h4>
+            <input type="text" placeholder="search">
+            <div class="mc_select">
+                <h5>Mots clefs selectionnes :</h5>
+                <ul>
+                    <li><a href="#">Chèze</a></li>
+                    <li><a href="#">Villages</a></li>
+                </ul>
+            </div>
+            <ul>
+                <li><a href="#">Baumes</a></li>
+                <li><a href="#">Eglises</a></li>
+                <li><a href="#">148 Km</a></li>
+                <li><a href="#">Boissières</a></li>
+                <li><a href="#">Chèze</a></li>
+                <li><a href="#">Villages</a></li>
+                <li><a href="#">Craux</a></li>
+                <li><a href="#">Site archeologique</a></li>
+                <li><a href="#">Soubrey</a></li>
+                <li><a href="#">Baumes</a></li>
+                <li><a href="#">Eglises</a></li>
+                <li><a href="#">148 Km</a></li>
+                <li><a href="#">Boissières</a></li>
+                <li><a href="#">Chèze</a></li>
+                <li><a href="#">Villages</a></li>
+                <li><a href="#">Craux</a></li>
+                <li><a href="#">Eglises</a></li>
+                <li><a href="#">148 Km</a></li>
+                <li><a href="#">Boissières</a></li>
+                <li><a href="#">Chèze</a></li>
+                <li><a href="#">Villages</a></li>
+                <li><a href="#">Craux</a></li>
+                <li><a href="#">Site archeologique</a></li>
+                <li><a href="#">Soubrey</a></li>
+            </ul>
+        </div>
+    </div>
     {% for flashMessage in app.session.flashbag.get('notice') %}
         {{ flashMessage }}
     {% endfor %}
 
-    {% for experience in experiences %}
-        <div class="row" style="margin-top:30px;">
-            <div class="col-md-1"></div>
-            <div class="col-md-6" style="border-bottom:1px solid #bebebe; padding-bottom:10px;">
-                <h3><a href="{{path('go_mobility_site_experience', {'id':experience.id})}}">{{experience.start}} à {{experience.arrival}} ({{experience.transport}})</a></h3>
-                <p>{{experience.description}}</p>
-            </div>
-        </div>
-    {% endfor %}
+    
 
 {% endblock %}
