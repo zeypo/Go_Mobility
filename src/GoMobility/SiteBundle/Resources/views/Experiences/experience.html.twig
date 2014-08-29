@@ -13,4 +13,9 @@
         </div>
     </div>
 
+    <div style="width:300px; margin-left:200px; margin-top:40px;">
+        {{ render(controller('GoMobilityCommentBundle:Main:Showform', {'articleid':experience.id})) }}
+        {{ render(controller('GoMobilityCommentBundle:Main:showComments', {'articleid':experience.id})) }}
+    </div>
+
 {% endblock %}

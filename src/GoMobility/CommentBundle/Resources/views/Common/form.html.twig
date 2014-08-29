@@ -1,0 +1,5 @@
+{% form_theme form with 'GoMobilityCommentBundle:Form:create.html.twig' %}
+
+<form class="form-horizontal" role="form" action="{{ path('comment_create', {'articleid':articleid})}}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+</form>

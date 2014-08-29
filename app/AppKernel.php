@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new GoMobility\SiteBundle\GoMobilitySiteBundle(),
             new GoMobility\AdminBundle\GoMobilityAdminBundle(),
             new GoMobility\UserBundle\GoMobilityUserBundle(),
+            new GoMobility\CommentBundle\GoMobilityCommentBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
         );

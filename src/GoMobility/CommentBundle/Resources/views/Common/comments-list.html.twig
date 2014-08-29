@@ -1,0 +1,6 @@
+{% for comment in comments %}
+    <div class="one-comment" style="padding:10px; border:1px solid #dedede; margin-top:10px;">
+        <p>{{comment.username}} à {{comment.date|date('m/d/Y')}}</p>
+        <p>{{comment.comment}}</p>
+    </div>
+{% endfor %}

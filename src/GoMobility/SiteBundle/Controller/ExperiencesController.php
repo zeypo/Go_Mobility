@@ -28,8 +28,8 @@ class ExperiencesController extends Controller
      */
     public function experienceAction($id)
     {
-        $repository = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
-        $experience = $repository->findOneById($id);
+        $em = $this->getDoctrine()->getEntityManager();
+        $experience = $em->getRepository('GoMobilitySiteBundle:Experiences')->findOneById($id);
         
         return $this->render('GoMobilitySiteBundle:Experiences:experience.html.twig', array('experience'=>$experience));
     }
@@ -80,9 +80,10 @@ class ExperiencesController extends Controller
 
             $this->get('session')->getFlashBag()->add('notice','Votre experience à bien été posté, elle est en attente de confirmation..');
             return $this->redirect($this->generateUrl('go_mobility_site_experiences'));
+        } else {
+            throw new \Exception("Formulaire non valide");
+            
         }
-
-        exit;
 
     }
 }

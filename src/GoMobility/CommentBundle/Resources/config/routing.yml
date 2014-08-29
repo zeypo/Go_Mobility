@@ -1,0 +1,11 @@
+comment_showform:
+    path:     /comments/form/{articleid}
+    defaults: { _controller: GoMobilityCommentBundle:Main:showform }
+
+comment_showcomments:
+    path:     /comments/list/{articleid}
+    defaults: { _controller: GoMobilityCommentBundle:Main:showcomments }
+
+comment_create:
+    path:     /comments/create/{articleid}
+    defaults: { _controller: GoMobilityCommentBundle:Main:create }
