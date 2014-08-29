@@ -1,27 +1,99 @@
 .article_bg{
 	height: 600px;
-	-webkit-filter: blur(4px);
-	-moz-filter: blur(4px);
-	-o-filter: blur(4px);
-	-ms-filter: blur(4px);
-
-	filter: blur(4px);
-	background: url(../images/list_img_article.jpg) no-repeat center fixed; 
-	  -webkit-background-size: cover; /* pour Chrome et Safari */
-	  -moz-background-size: cover; /* pour Firefox */
-	  -o-background-size: cover; /* pour Opera */
-	  background-size: cover; /* version standardisée */
+	background: url(../images/list_img_article_2.jpg) no-repeat center fixed; 
+	-webkit-background-size: cover; /* pour Chrome et Safari */
+	-moz-background-size: cover; /* pour Firefox */
+	-o-background-size: cover; /* pour Opera */
+	background-size: cover; /* version standardisée */
 }
 
 .content_blog_article{
-	background: @White url('../images/presentation-background-article.jpg') repeat-x bottom;
 	position: relative;
+	padding-bottom: 30px;
 	.content_content_article{
+		font-family: 'Merriweather', serif;
 		background: @White;
 		width: 900px;
+		padding: 70px 50px;
 		margin: 0 auto;
 		position: relative;
-		bottom: 300px;
+		margin-top: -300px;
 		min-height: 300px;
+		.arrow{
+			position: absolute;
+			height: 300px;
+			width: 40px;
+			top: 0;
+		}
+		.precedent{
+			background: url(../images/arrow-pres.png) no-repeat center;
+			left: -80px;
+		}
+		.suivant{
+			background: url(../images/arrow-suiv.png) no-repeat center;
+			right: -80px;
+		}
+		h1{
+			font-size: 50px;
+			font-weight: bold;
+			margin-bottom: 30px;
+		}
+		p{
+			font-family: 'Merriweather', serif;
+			line-height: 35px;
+			margin-bottom: 40px;
+			font-size: 16px;
+			span{
+				font-weight: 200;
+				font-style: italic;
+				color: @GmDarkGray;
+			}
+		}
+		.article_mot_clef{
+			font-family: 'Open sans', sans-serif;
+			margin-bottom: 40px;
+	    	ul{
+	    		padding: 20px 0 0 0; 
+	    		li{
+	    			display: inline-block;
+	    			margin: 0 5px 15px 0;
+	    			a{
+	    				background: @GmLigthGray;
+	    				color: #cccccc;
+	    				padding: 5px;
+	    				.border-radius(4px)
+	    			}
+	    		}
+	    	}
+		}
+		.auteur{
+			border-top: 1px solid @GmLigthGray;
+			text-align: center;
+			padding-top: 40px;
+			img{
+				width: 60px;
+				border-radius: 80px;
+			}
+			p{
+				font-family: 'Open sans', sans-serif;
+				margin-bottom: 0;
+				line-height: inherit;
+				span{
+					text-transform: uppercase;
+					font-style: inherit;
+					color: #000;
+				}
+				i{
+					color: #b1b1b1;
+					a{
+						color: #b1b1b1;
+						font-weight: bold;
+					}
+					a:hover{
+						color: #b1b1b1;
+					}
+				}
+			}
+		}
 	}
 }

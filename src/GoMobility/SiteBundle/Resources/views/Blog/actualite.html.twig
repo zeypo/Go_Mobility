@@ -2,10 +2,32 @@
 
 {% block body %}
 	<div class="article_bg"></div>
-	<div class="content_blog content_blog_article">
+	<div class="content_blog content_blog_article wrapper">
 		<div class="content_content_article">
+			<div class="precedent arrow"><a href="#"></a></div>
+			<div class="suivant arrow"><a href="#"></a></div>
     		<h1>Actualite n°{{id}}</h1>
+    		<p><span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam urna, auctor at bibendum vitae, tristique in dolor. Integer eget placerat dui. Etiam in lacus vel tortor porta placerat sit amet in erat. Nullam ac justo in odio cursus hendrerit. Ut scelerisque sagittis elementum. <br/>
+    		Nunc et consequat lectus, at volutpat justo. Cras convallis, lectus ut varius porta, odio nibh varius tellus, sed convallis orci nisl ac ipsum. Nam fringilla tristique pulvinar. Integer pellentesque imperdiet est, eget condimentum nisl faucibus a. Curabitur rhoncus quis</span></p>
+    		<p>Curabitur rhoncus quis justo id scelerisque. Mauris eleifend massa est, nec tincidunt nisl imperdiet nec. Donec ut odio ut enim auctor porta non feugiat turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus facilisis ultricies tellus, sit amet vehicula dui dictum in. Ut egestas ipsum sed turpis ullamcorper, molestie laoreet erat dictum. Pellentesque imperdiet ligula id commodo scelerisque.</p>
+    		<p>Pellentesque consequat ornare nulla, laoreet malesuada quam luctus pretium. Integer congue justo at tellus pellentesque, sed ullamcorper nulla tincidunt. Sed efficitur massa ultricies.<br/> consectetur ex non, viverra nisl. Pellentesque pulvinar porttitor dolor, eget imperdiet justo dictum ac. Nulla sit amet purus nec quam aliquet malesuada ac ac enim. Suspendisse tellus felis, placerat vitae quam a, mattis bibendum velit. Phasellus elementum, neque vitae ultricies commodo, purus ligula egestas enim, sit amet dignissim orci ipsum</p>
+	    	<div class="article_mot_clef">
+	    		<h5>Mots clefs associes a l'article :</h5>
+	    		<ul>
+	                <li><a href="#">Baumes</a></li>
+	                <li><a href="#">Eglises</a></li>
+	                <li><a href="#">148 Km</a></li>
+	                <li><a href="#">Villages</a></li>
+	                <li><a href="#">Craux</a></li>
+	    		</ul>
+	    	</div>
+	    	<div class="auteur">
+	    		<img src="{{asset('bundles/gomobilitysite/images/usr_1.jpg')}}">
+	    		<p>Cody <span>Lambert</span></p>
+	    		<p><i>Redacteur chez <a href="#">GoMobility</a></i></p>
+	    	</div>
     	</div>
     </div>
+    <div class="bg_paysage"></div>
 
 {% endblock %}
