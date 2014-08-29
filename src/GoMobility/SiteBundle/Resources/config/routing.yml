@@ -26,8 +26,8 @@ go_mobility_site_experiences_create:
 
 #BlogController
 go_mobility_site_actualites:
-    path: /actualites
-    defaults: { _controller: GoMobilitySiteBundle:Blog:actualites }
+    path: /actualites/{page}
+    defaults: { _controller: GoMobilitySiteBundle:Blog:actualites, page:1 }
 
 go_mobility_site_actualite:
     path: /actualite/{id}

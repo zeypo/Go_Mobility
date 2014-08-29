@@ -79,6 +79,7 @@ class PublicController extends Controller
         $form->handleRequest($this->getRequest());
 
         if($form->isValid()){
+            $article = $form->getData();
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice','L\'article à bien été mise à jour.');

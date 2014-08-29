@@ -9,12 +9,25 @@ class BlogController extends Controller
     /**
      * Retourne l'ensemble des dernières actualitées
      */
-    public function actualitesAction()
+    public function actualitesAction($page)
     {
-        $em = $this->getDoctrine()->getEntityManager();
-        $articles =  $em->getRepository('GoMobilitySiteBundle:Articles')->findByStatus(1);
+        $maxArticles  = 2;
+        $em           = $this->getDoctrine()->getEntityManager();
+        $repository   = $em->getRepository('GoMobilitySiteBundle:Articles') ;
         
-        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig', array('articles'=>$articles));
+        $articles   =  $repository->findByStatus(1);
+        $articles_count = count($articles);
+
+        $pagination = array(
+            'page' => $page,
+            'route' => 'go_mobility_site_actualites',
+            'pages_count' => ceil($articles_count / $maxArticles),
+            'route_params' => array()
+        );
+
+         $articles = $repository->getList($page, $maxArticles);
+        
+        return $this->render('GoMobilitySiteBundle:Blog:actualites.html.twig', array('articles'=>$articles, 'pagination'=>$pagination));
     }
 
     /**
@@ -23,6 +36,8 @@ class BlogController extends Controller
      */
     public function actualiteAction($id)
     {
-        return $this->render('GoMobilitySiteBundle:Blog:actualite.html.twig', array('id'=>$id));
+        $em = $this->getDoctrine()->getEntityManager();
+        $article =  $em->getRepository('GoMobilitySiteBundle:Articles')->find($id);
+        return $this->render('GoMobilitySiteBundle:Blog:actualite.html.twig', array('article'=>$article));
     }
 }

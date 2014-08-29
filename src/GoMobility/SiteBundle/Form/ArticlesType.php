@@ -17,9 +17,10 @@ class ArticlesType extends AbstractType
         $builder
             ->add('title')
             ->add('author')
+            ->add('intro')
             ->add('content')
             ->add('status')
-            ->add('document', 'file', array('label' => 'Image', 'required' => false, 'data_class'=>null))
+            ->add('file', 'file', array('required' => false))
             ->add('enregistrer', 'submit');
         ;
     }

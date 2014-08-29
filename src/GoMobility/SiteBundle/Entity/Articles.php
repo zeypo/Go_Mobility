@@ -3,15 +3,20 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Articles
  *
  * @ORM\Table(name="articles")
  * @ORM\Entity(repositoryClass="GoMobility\SiteBundle\Entity\ArticlesRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Articles
 {
+    private $temp;
+    
     /**
      * @var integer
      *
@@ -50,6 +55,13 @@ class Articles
     private $content;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="intro", type="text", nullable=true)
+     */
+    private $intro;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean", nullable=true)
@@ -57,9 +69,97 @@ class Articles
     private $status;
 
     /**
-     * @ORM\OneToOne(targetEntity="GoMobility\SiteBundle\Entity\Document", cascade={"persist"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $document;
+    public $path;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'bundles/gomobilitysite/images/blog';
+    }
+
+   /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+
+        if (isset($this->path)) {
+            $this->temp = $this->path;
+            $this->path = null;
+        } else {
+            $this->path = 'bundles/gomobilitysite/images/blog';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename.'.'.$this->getFile()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // if there is an error when moving the file, an exception will
+        // be automatically thrown by move(). This will properly prevent
+        // the entity from being persisted to the database on error
+        $this->getFile()->move($this->getUploadRootDir(), $this->path);
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            //unlink($this->getUploadRootDir().'/'.$this->temp);
+            $this->temp = null;
+        }
+        $this->file = null;
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($file = $this->getAbsolutePath()) {
+            unlink($file);
+        }
+    }
+
 
     public function __construct()
     {
@@ -193,25 +293,58 @@ class Articles
     }
 
     /**
-     * Set document
+     * Set intro
      *
-     * @param \GoMobility\SiteBundle\Entity\Document $document
+     * @param string $intro
      * @return Articles
      */
-    public function setDocument(\GoMobility\SiteBundle\Entity\Document $document = null)
+    public function setIntro($intro)
     {
-        $this->file = $document;
+        $this->intro = $intro;
 
         return $this;
     }
 
     /**
-     * Get document
+     * Get intro
      *
-     * @return \GoMobility\SiteBundle\Entity\Document 
+     * @return string 
      */
-    public function getDocument()
+    public function getIntro()
     {
-        return $this->document;
+        return $this->intro;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Articles
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
 }

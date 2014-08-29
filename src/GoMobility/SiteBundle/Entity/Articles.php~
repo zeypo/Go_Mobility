@@ -3,6 +3,7 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Articles
@@ -50,16 +51,92 @@ class Articles
     private $content;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="intro", type="text", nullable=true)
+     */
+    private $intro;
+
+    /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     private $status;
 
     /**
-     * @ORM\OneToOne(targetEntity="GoMobility\SiteBundle\Entity\Document", cascade={"persist"})
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $document;
+    public $imagePath;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->imagePath ? null : $this->getUploadRootDir().'/'.$this->imagePath;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->imagePath ? null : $this->getUploadDir().'/'.$this->imagePath;
+    }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'bundles/gomobilitysite/images/blog';
+    }
+
+    /**
+    * @ORM\prePersist
+    */
+    public function preUpload()
+    {
+      if (null !== $this->file) {
+        // do whatever you want to generate a unique name
+        $this->imagePath = uniqid().'.'.$this->file->guessExtension();
+      }
+    }
+     
+    /**
+    * @ORM\postPersist
+    */
+    public function upload()
+    {
+      if (null === $this->file) {
+        return;
+      }
+     
+      // if there is an error when moving the file, an exception will
+      // be automatically thrown by move(). This will properly prevent
+      // the entity from being persisted to the database on error
+      $this->file->move($this->getUploadRootDir(), $this->imagePath);
+     
+      unset($this->file);
+    }
+     
+    /**
+    * @ORM\postRemove
+    */
+    public function removeUpload()
+    {
+      if ($file = $this->getAbsolutePath()) {
+        unlink($file);
+      }
+    }
+
+
+    public function __construct()
+    {
+        $this->date = new \DateTime();
+    }
 
 
     /**
@@ -188,25 +265,48 @@ class Articles
     }
 
     /**
-     * Set document
+     * Set intro
      *
-     * @param \GoMobility\SiteBundle\Entity\Document $document
+     * @param string $intro
      * @return Articles
      */
-    public function setDocument(\GoMobility\SiteBundle\Entity\Document $document = null)
+    public function setIntro($intro)
     {
-        $this->file = $document;
+        $this->intro = $intro;
 
         return $this;
     }
 
     /**
-     * Get document
+     * Get intro
      *
-     * @return \GoMobility\SiteBundle\Entity\Document 
+     * @return string 
      */
-    public function getDocument()
+    public function getIntro()
     {
-        return $this->document;
+        return $this->intro;
+    }
+
+    /**
+     * Set imagePath
+     *
+     * @param string $imagePath
+     * @return Articles
+     */
+    public function setImagePath($imagePath)
+    {
+        $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePath
+     *
+     * @return string 
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
     }
 }

@@ -1,6 +1,11 @@
 $(document).ready(function(){
 	
 	window.onload = init;
+	$( ".parcours_bt" ).click(function( event ) {
+  		event.preventDefault();
+  		var parent = $(this).parent()
+  		parent.children('.toggle:first').toggleClass('toggle_c');
+	});
 
 	function init ()
 	{

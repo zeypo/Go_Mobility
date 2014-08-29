@@ -6,28 +6,24 @@
             <ul>
                 {% for article in articles %}
                     <li>
-                        <img src="{{asset('bundles/gomobilitysite/images/list_img_article.jpg')}}">   
+                        {% if article.path != null %}<img src="{{asset('bundles/gomobilitysite/images/blog/' ~ article.path)}}">{% endif %}
                         <div class="title">
                             <h4>{{article.title}}</h4>
                             <div class="fb">
                                 <img src="{{asset('bundles/gomobilitysite/images/lik_bt.jpg')}}">   
                             </div>
                         </div>
-                        <p>{{article.content}}</p>
+                        {% if article.intro is defined %}
+                            <p>{{ article.intro|length > 200 ? article.intro|slice(0, 200) ~ '...' : article.intro  }}</p>
+                        {% else %}
+                            <p>{{ article.content|length > 200 ? article.content|slice(0, 200) ~ '...' : article.content  }}</p>
+                        {% endif %}
                         <a href="{{path('go_mobility_site_actualite', {'id':article.id})}}">Voir plus</a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="pagination">
-            <ul>
-                <li><a href="#" class=" ">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li class="last_page"><a href="#">derniere page</a></li>
-            </ul>
-        </div>
+        {% include 'GoMobilitySiteBundle:Common:pagination.html.twig' %}
     </div>
+    <div class="bg_paysage"></div>
 {% endblock %}
