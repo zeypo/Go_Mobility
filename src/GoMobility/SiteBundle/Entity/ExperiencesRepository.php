@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExperiencesRepository extends EntityRepository 
 {
+    /**
+     * Renvoit les dernières experience ayant pour status publié
+     * @param  $nbExperiences
+     * @return $experiences
+     */
+    public function getLastExperiences($nbExperiences)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('experiences')
+            ->from('GoMobilitySiteBundle:Experiences','experiences')
+            ->where('experiences.publish = 1')
+            ->add('orderBy', 'experiences.id ASC')
+            ->getQuery();
+        ;
+ 
+        $q->setFirstResult(0)
+            ->setMaxResults($nbExperiences);
+    
+        return $q->getResult();
+    }
 }

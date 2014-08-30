@@ -11,7 +11,11 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('GoMobilitySiteBundle:Home:index.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $experience = $em->getRepository('GoMobilitySiteBundle:Experiences')->getLastExperiences(1);
+        $articles   = $em->getRepository('GoMobilitySiteBundle:Articles')->getLastExperiences(2);
+        
+        return $this->render('GoMobilitySiteBundle:Home:index.html.twig', array('experience'=>$experience, 'articles'=>$articles));
     }
 
 

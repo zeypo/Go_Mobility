@@ -34,4 +34,26 @@ class ArticlesRepository extends EntityRepository
  
         return new Paginator($q);
     }
+
+    /**
+     * Renvoit les dernières articles ayant pour status publié
+     * @param  $nbArticles
+     * @return $articles
+     */
+    public function getLastExperiences($nbArticles)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('articles')
+            ->from('GoMobilitySiteBundle:Articles','articles')
+            ->where('articles.status = 1')
+            ->add('orderBy', 'articles.id ASC')
+            ->getQuery();
+        ;
+ 
+        $q->setFirstResult(0)
+            ->setMaxResults($nbArticles);
+    
+        return $q->getResult();
+    }
+
 }
