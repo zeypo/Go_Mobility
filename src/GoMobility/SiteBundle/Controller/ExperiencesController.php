@@ -50,6 +50,7 @@ class ExperiencesController extends Controller
     {
         $userManager = $this->get('fos_user.user_manager');
         $em = $this->getDoctrine()->getEntityManager();
+        $keywordRepo = $em->getRepository('GoMobilitySiteBundle:Keyword');
         
         $form = $this->get('form.factory')->create(new ExperiencesType(), new Experiences());
         $form->handleRequest($this->getRequest());
@@ -75,6 +76,9 @@ class ExperiencesController extends Controller
 
             $experience->setGes(20);
             $experience->setUser($user);
+
+            print($experience);exit;
+
             $em->persist($experience);
             $em->flush();
 

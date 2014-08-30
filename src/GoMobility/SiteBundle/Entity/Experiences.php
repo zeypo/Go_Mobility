@@ -3,8 +3,6 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Experiences
@@ -14,6 +12,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Experiences
 {   
+    /**
+     * @ORM\ManyToMany(targetEntity="GoMobility\SiteBundle\Entity\Keyword", cascade={"persist"})
+     */
+    private $keywords;
+    
     /**
      * @var integer
      *
@@ -78,6 +81,11 @@ class Experiences
      * @ORM\Column(name="publish", type="boolean")
      */
     private $publish = false;
+
+    public function __construct()
+    {
+        $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -305,5 +313,38 @@ class Experiences
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Add keywords
+     *
+     * @param \GoMobility\SiteBundle\Entity\Keyword $keywords
+     * @return Articles
+     */
+    public function addKeyword(\GoMobility\SiteBundle\Entity\Keyword $keywords)
+    {
+        $this->keywords[] = $keywords;
+
+        return $this;
+    }
+
+    /**
+     * Remove keywords
+     *
+     * @param \GoMobility\SiteBundle\Entity\Keyword $keywords
+     */
+    public function removeKeyword(\GoMobility\SiteBundle\Entity\Keyword $keywords)
+    {
+        $this->keywords->removeElement($keywords);
+    }
+
+    /**
+     * Get keywords
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getKeywords()
+    {
+        return $this->keywords;
     }
 }

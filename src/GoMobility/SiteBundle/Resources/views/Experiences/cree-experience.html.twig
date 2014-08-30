@@ -50,7 +50,12 @@
 						            {{ form_widget(form.description)}}
 						            {{ form_errors(form.description) }}
 						        </div>
-					        	<input type="submit" value="ok">
+                                <div>
+                                    <p>{{ form_label(form.keywords) }}</p>
+                                    {{ form_widget(form.keywords)}}
+                                    {{ form_errors(form.keywords) }}
+                                </div>
+					        	{{ form_widget(form.envoyer) }}
 				        	</div>
 	            		</li>
 	            	</ul>

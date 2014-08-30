@@ -22,6 +22,7 @@ class ExperiencesType extends AbstractType
             ->add('start', 'text')
             ->add('arrival', 'text')
             ->add('description', 'textarea')
+            ->add('keywords', 'text')
             ->add('game', 'checkbox', array(
                     'label'=>'Je m\'inscrit au jeux concours',
                     'required'  => false
