@@ -1,18 +1,62 @@
 {% extends "::layout.html.twig" %}
-{% form_theme form with 'GoMobilitySiteBundle:Form:fields.html.twig' %}
 
 {% block body %}
-    
-    <div class="row">
-        <h1>Crée son experience</h1>
-        <div class="col-md-1"></div>
-        <div style="margin-top:200px;" class="col-md-6">
-            
-            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }}>
-                {{ form_widget(form) }}
-            </form>
-
+    <div class="content_creat wrapper">
+    	<div>
+	        <h1>Ajouter une experience</h1>
+	        <ul class="step_control">
+	        	<li>1</li>
+	        	<li>2</li>
+	        	<li>3</li>
+	        	<li class="bg_step_control"><div></div></li>
+	        </ul>
+	        <div class="content_content_creat ">
+	            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }}>
+	            	<ul>
+	            		<li class="step step1">
+	            			<div class="content_step">		       
+		            			<div>
+						            <p>{{ form_label(form.email) }}</p>
+						            {{ form_widget(form.email)}}
+						            {{ form_errors(form.email) }}
+						        </div>
+						        <div>
+									<p>{{ form_label(form.transport) }}</p>
+					            	{{ form_widget(form.transport)}}
+					            	{{ form_errors(form.transport) }}				      
+					        	</div>				  
+				        		<a href="#" class="step_suiv">Deuxiemes etape</a>
+							</div>
+	            		</li>
+	            		<li class="step step2">	
+	            			<div class="content_step">		       	       
+		            			<div>
+						            <p>{{ form_label(form.start) }}</p>
+						            {{ form_widget(form.start)}}
+						            {{ form_errors(form.start) }}
+						        </div>
+						        <div>
+									<p>{{ form_label(form.arrival) }}</p>
+					            	{{ form_widget(form.arrival)}}
+					            	{{ form_errors(form.arrival) }}				      
+					        	</div>
+					        	<a href="#" class="step_suiv">Troisieme etape</a>
+				        	</div>
+	            		</li>
+	            		<li class="step step3">	
+	            			<div class="content_step">		       	       
+		            			<div>
+						            <p>{{ form_label(form.description) }}</p>
+						            {{ form_widget(form.description)}}
+						            {{ form_errors(form.description) }}
+						        </div>
+					        	<input type="submit" value="ok">
+				        	</div>
+	            		</li>
+	            	</ul>
+	            </form>
+	        </div>
         </div>
     </div>
-
+	<div class="bg_paysage"></div>
 {% endblock %}
