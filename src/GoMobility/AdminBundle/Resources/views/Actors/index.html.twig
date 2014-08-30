@@ -20,13 +20,20 @@
                                  <a href="#">{{user.info.email}}</a>
                             </td>
                             <td><p>{{user.info.email}}</p></td>
-                            <td><a href="#" class="parcours_bt">{{user.experiences|length}} parcours</a></td>       
+                            <td><p class="parcours_bt">{{user.experiences|length}} parcours</p></td>       
                         </tr>
-                        <tr class="toggle toggle_close">
-                            <td colspan=3>
-                                {% for experience in user.experiences %}
-                                    <p><a href="{{path('go_mobility_admin_acteur', {'id':experience.id})}}">{{experience.description}}</a></p>
-                                {% endfor %}
+                        <tr>
+                            <td colspan=3 class="exp_content">
+                                <table>
+                                    <tbody>
+                                        {% for experience in user.experiences %}
+                                            <tr>
+                                                <td><a href="{{path('go_mobility_admin_acteur', {'id':experience.id})}}">{{experience.start}} / {{experience.arrival}}</a></td>
+                                                <td>{% if experience.publish == 0 %}Non Publié{% else %}Publié{% endif %}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </td>
                         </tr>
                     {% endfor %}

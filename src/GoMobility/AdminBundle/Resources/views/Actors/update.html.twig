@@ -2,9 +2,14 @@
 {% form_theme form with 'GoMobilitySiteBundle:Form:update.html.twig' %}
 
 {% block body %}
-    <div class="contents" style="padding-top:100px; padding-left:420px; width:85%;">
-        <form class="form-horizontal" role="form" action="{{ path('go_mobility_admin_acteur_update', {'id':experience.id})}}" method="post" {{ form_enctype(form) }}>
-            {{ form_widget(form) }}
-        </form>
-    </div>
+
+   	<div class="content">
+   		<div class="content_content nb_elmt_three content_public_creer">
+		    <div class="contents">
+		        <form  role="form" action="{{ path('go_mobility_admin_acteur_update', {'id':experience.id})}}" method="post" {{ form_enctype(form) }}>
+		            {{ form_widget(form) }}
+		        </form>
+		    </div>
+		</div>
+	</div>
 {% endblock %}

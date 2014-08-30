@@ -2,34 +2,36 @@
 
 {% block body %}
     <div class="content">
-        <h1>Commentaires en attente de validation</h1>
-
-        {% for experienceName, experience in experiences %}
-            <div style="margin-top:50px; margin-left:100px;">
-                <h2>{{experienceName}}</h2>
-                <table>
-                    <thead>
-                        <tr class="tr_org">
-                            <th>Nom</th>
-                            <th>Date</th>
-                            <th>Commentaire</th>
-                            <th>Validé</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for commentaire in experience %}
-                                <tr>
-                                    <td>{{commentaire.username}}</td>
-                                    <td>{{commentaire.date|date('d/m/Y')}}</td>
-                                    <td>{{commentaire.comment}}</td>
-                                    <td>
-                                        <a href="{{path('comment_publish', {'id':commentaire.id})}}">autorisé</a>
-                                    </td>
-                                </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        {% endfor %}
+        <div class="content_content nb_elmt_three content_comment">
+            <h4>Commentaires en attente de validation</h4>
+            {% for experienceName, experience in experiences %}
+                <div class="commment_exp">
+                    <h5>{{experienceName}}</h2>
+                    <table>
+                        <thead>
+                            <tr class="tr_org">
+                                <th>Nom</th>
+                                <th>Date</th>
+                                <th>Validé</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for commentaire in experience %}
+                                    <tr>
+                                        <td>{{commentaire.username}}</td>
+                                        <td>{{commentaire.date|date('d/m/Y')}}</td>
+                                        <td>
+                                            <a href="{{path('comment_publish', {'id':commentaire.id})}}">autorisé</a>
+                                        </td>
+                                    </tr>
+                                    <tr class="wrapper_comment">
+                                        <td colspan=3>{{commentaire.comment}}</td>
+                                    </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}
