@@ -6,14 +6,19 @@
         {{ flashMessage }}
     {% endfor %}
 
-    <div class="content_experiences">
-        <ul class="org-list">
-            <li class="green"><a href="#">TOURISME</a></li>
-            <li class="blue"><a href="#">SPORT</a></li>
-            <li class="red"><a href="#">GO TO WORK</a></li>
-            <li class="bt_add_exp"><a href="{{path('go_mobility_site_experiences_register')}}"><span>+</span> Ajouter un experience</a></li>
-        </ul>
-       
+    <div class="content_experiences wrapper">
+        <div class="org-list">
+            <ul>
+                <li class="all select"><a href="#" id="all">All</a></li>
+                <li class="green"><a href="#" id="touristique">TOURISME</a></li>
+                <li class="blue"><a href="#" id="sportif">SPORT</a></li>
+                <li class="red"><a href="#" id="work">GO TO WORK</a></li>
+                <li class="bt_add_exp"><a href="{{path('go_mobility_site_experiences_register')}}"><span>+</span> Ajouter un experience</a></li>
+            </ul>
+            <div class="bg_org">
+                <div></div>
+            </div>
+       </div>
         <div class="content_list">
             <ul>
                 {% for experience in experiences %}
@@ -31,13 +36,14 @@
                                 </li>
                                 <li> {{experience.arrival}}</li>
                             </ul>
-                            <p>{{experience.ges}} Pt</p>
+                            <p><span>{{experience.ges}}</span> points</p>
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
+    <div class="bg_paysage"></div>
     <div class="mot_clefs">
         <div class="mc_content">
             <h4>Mots clefs</h4>

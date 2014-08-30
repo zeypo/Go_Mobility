@@ -15,7 +15,8 @@ class ExperiencesUpdateType extends ExperiencesType
         $builder
             ->add('publish', 'checkbox', array(
                     'label'=>'Publier',
-                    'required'  => false
+                    'required'  => false,
+                    "label_attr" => array('class' => 'input_float')
             ));
     }
 }
