@@ -9,15 +9,15 @@ go_mobility_site_projet:
 
 #ExperienceController
 go_mobility_site_experiences:
-    path:     /vos-experiences
-    defaults: { _controller: GoMobilitySiteBundle:Experiences:experiences }
+    path:     /vos-experiences/{page}
+    defaults: { _controller: GoMobilitySiteBundle:Experiences:experiences, page:1 }
 
 go_mobility_site_experiences_register:
     path:     /vos-experiences/creer
     defaults: { _controller: GoMobilitySiteBundle:Experiences:experienceRegister }
 
 go_mobility_site_experience:
-    path:     /vos-experiences/{id}
+    path:     /vos-experiences/experience/{id}
     defaults: { _controller: GoMobilitySiteBundle:Experiences:experience }
 
 go_mobility_site_experiences_create:

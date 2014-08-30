@@ -47,6 +47,9 @@ class ActorsController extends Controller
         $form->handleRequest($this->getRequest());
 
         if($form->isValid()){
+            $experience = $form->getData();
+
+            $em->persist($experience);
             $em->flush();
 
             $this->get('session')->getFlashBag()->add('notice','L\'expérience à bien été mise à jour.');

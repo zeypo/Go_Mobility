@@ -7,9 +7,10 @@ $(document).ready(function(){
 		display = $(this).attr('id');
 		toogleList();
 	});
-	function toogleList (){
-		console.log(display)		
-		list.toggle().hide();	
+	
+	function toogleList ()
+	{
+		list.toggle().hide();
 		if(display == 'touristique'){
 			$('.traject_entity.touristique').css({
 				display :'inherit'
@@ -28,5 +29,6 @@ $(document).ready(function(){
 			});		
 		}
 	}
+	
 	toogleList();
 });

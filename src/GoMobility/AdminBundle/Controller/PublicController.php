@@ -29,7 +29,7 @@ class PublicController extends Controller
     }
 
     /**
-     * Enregistre l'experience en bdd et redirige l'internaute vers toutes les experiences
+     * Enregistre l'article en bdd et redirige l'admin vers les autres articles
      */
     public function saveAction()
     {

@@ -12,10 +12,13 @@ class MainController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $experience = $em->getRepository('GoMobilitySiteBundle:Experiences')->getLastExperiences(1);
+        $experience = $em->getRepository('GoMobilitySiteBundle:Experiences')->getLastExperiences(1)[0];
         $articles   = $em->getRepository('GoMobilitySiteBundle:Articles')->getLastExperiences(2);
         
-        return $this->render('GoMobilitySiteBundle:Home:index.html.twig', array('experience'=>$experience, 'articles'=>$articles));
+        $user = $experience->getUser();
+        //print_r($user->getEmail)
+
+        return $this->render('GoMobilitySiteBundle:Home:index.html.twig', array('experience'=>$experience, 'articles'=>$articles, 'user'=>$user));
     }
 
 
