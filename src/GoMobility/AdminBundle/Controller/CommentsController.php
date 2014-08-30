@@ -13,6 +13,8 @@ class CommentsController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
         $comments   = $em->getRepository('GoMobilityCommentBundle:Commentaire')->findByPublish(0);
+        if(empty($comments)) $data = array();
+
         foreach ($comments as $k => $comment) {
             $experience = $comment->getExperience();
             $experienceName = $experience->getStart().'-'.$experience->getArrival();
