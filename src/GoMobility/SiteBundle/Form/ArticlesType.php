@@ -19,9 +19,9 @@ class ArticlesType extends AbstractType
             ->add('author')
             ->add('intro')
             ->add('content')
-            ->add('status')
-            ->add('file', 'file', array('required' => false))
-            ->add('enregistrer', 'submit');
+            ->add('status', 'checkbox', array('label' => 'Statut', "label_attr" => array('class' => 'input_float')))
+            ->add('file', 'file', array('required' => false, "label_attr" => array('class' => 'input_float')))
+            ->add('enregistrer', 'submit')
         ;
     }
     

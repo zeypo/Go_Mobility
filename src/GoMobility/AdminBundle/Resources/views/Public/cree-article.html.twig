@@ -1,18 +1,15 @@
+
 {% extends "GoMobilityAdminBundle:Common:layout.html.twig" %}
 {% form_theme form with 'GoMobilitySiteBundle:Form:fields.html.twig' %}
 
 {% block body %}
-    <div class="content">
-        <div class="row">
-            <h1>Crée un article</h1>
-            <div class="col-md-1"></div>
-            <div style="margin-top:200px;" class="col-md-6">
-                
-                <form class="form-horizontal" role="form" action="{{ path('go_mobility_admin_public_save')}}" method="post" {{ form_enctype(form) }}>
-                    {{ form_widget(form) }}
-                </form>
-
-            </div>
+      <div class="content">
+        <div class="content_content nb_elmt_three content_public_creer">
+            <h4>Crée un article</h4>
+            <a href="{{path('go_mobility_admin_public')}}" class="new_article">Annuler</a>
+            <form role="form" action="{{ path('go_mobility_admin_public_save')}}" method="post" {{ form_enctype(form) }}>
+                {{ form_widget(form) }}
+            </form>
         </div>
     </div>
 {% endblock %}

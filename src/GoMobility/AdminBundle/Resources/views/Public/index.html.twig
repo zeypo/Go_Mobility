@@ -1,27 +1,30 @@
 {% extends "GoMobilityAdminBundle:Common:layout.html.twig" %}
 
 {% block body %}
-	<div class="content">
-    	<h1>Public</h1>
-        <table>
-            <thead>
-                <tr class="tr_org">
-                    <th>Titre</th>
-                    <th>Date</th>
-                    <th>Auteur</th>
-                    <th>Publié</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for article in articles %}
-                        <tr>
-                            <td><a href="{{path('go_mobility_admin_public_show', {'id':article.id})}}">{{article.title}}</a></td>
-                            <td>{{article.date|date('d/m/Y')}}</td>
-                            <td>{{article.author}}</td>
-                            <td>{% if article.status == true %}Publié{% else %}Non publié{% endif %}</td>
-                        </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="content">
+        <div class="content_content nb_elmt_three content_public">
+        	<h4>Public</h4>
+            <a href="{{path('go_mobility_admin_public_create')}}" class="new_article"><span>+</span> Ajouter un article</a>
+            <table>
+                <thead>
+                    <tr class="tr_org">
+                        <th>Titre</th>
+                        <th>Date</th>
+                        <th>Auteur</th>
+                        <th>Publié</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                            <tr>
+                                <td><a href="{{path('go_mobility_admin_public_show', {'id':article.id})}}">{{article.title}}</a></td>
+                                <td>{{article.date|date('d/m/Y')}}</td>
+                                <td>{{article.author}}</td>
+                                <td>{% if article.status == true %}Publié{% else %}Non publié{% endif %}</td>
+                            </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}

@@ -20,7 +20,7 @@ go_mobility_admin_acteur_update:
 #Comments Controller
 go_mobility_admin_comments:
     path:     /admin/commentaires
-    defaults: { _controller: GoMobilityAdminBundle:Comments:index }    
+    defaults: { _controller: GoMobilityAdminBundle:Comments:index }
 
 #Public Controller
 go_mobility_admin_public:
