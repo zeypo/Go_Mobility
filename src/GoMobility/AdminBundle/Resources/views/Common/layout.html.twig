@@ -36,17 +36,34 @@
                 </a>
             </div>
         </header>
-        <nav>
+        <nav class="nav-left">
             <ul>
-                <li><a href="{{path('go_mobility_admin_homepage')}}" title="Dashboard"> <img src="{{asset('bundles/gomobilityadmin/images/icon-dashbord.svg')}}">Dashboard</a></li>
-                <li><a href="{{path('go_mobility_admin_acteurs')}}" title="Eco-Acteurs"><img src="{{asset('bundles/gomobilityadmin/images/icon-acteur.svg')}}">Eco-Acteurs</a></li>
-                <li><a href="{{path('go_mobility_admin_comments')}}" title="Commentaires"><img src="{{asset('bundles/gomobilityadmin/images/icon-commentaire.svg')}}">Commentaires</a></li>
-                <li><a href="{{path('go_mobility_admin_public')}}" title="Public"><img src="{{asset('bundles/gomobilityadmin/images/icon-public.svg')}}">Public</a></li>
+                <li class="dashboard"><a href="{{path('go_mobility_admin_homepage')}}" title="Dashboard"> <img src="{{asset('bundles/gomobilityadmin/images/icon-dashbord.svg')}}">Dashboard</a></li>
+                <li class="acteurs"><a href="{{path('go_mobility_admin_acteurs')}}" title="Eco-Acteurs"><img src="{{asset('bundles/gomobilityadmin/images/icon-acteur.svg')}}">Eco-Acteurs</a></li>
+                <li class="commentaires"><a href="{{path('go_mobility_admin_comments')}}" title="Commentaires"><img src="{{asset('bundles/gomobilityadmin/images/icon-commentaire.svg')}}">Commentaires</a></li>
+                <li class="public"><a href="{{path('go_mobility_admin_public')}}" title="Public"><img src="{{asset('bundles/gomobilityadmin/images/icon-public.svg')}}">Public</a></li>
             </ul>
         </nav>
 
 
         {% block body %}{% endblock %}
         {% block javascript_footer %}{% endblock %}
+
+        <script>
+            $(function(){
+
+                var currentPath = '{{path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))}}';
+                
+                if(currentPath.indexOf("public") > -1){
+                    $('.nav-left .public').addClass('active');
+                } else if(currentPath.indexOf("commentaires") > -1){
+                    $('.nav-left .commentaires').addClass('active');
+                } else if(currentPath.indexOf("eco-acteurs") > -1){
+                    $('.nav-left .acteurs').addClass('active');
+                } else {
+                    $('.nav-left .dashboard').addClass('active');
+                }
+            })
+        </script>
     </body>
 </html>

@@ -21,6 +21,12 @@ class CommentsController extends Controller
             
             $data[$experienceName][$k] = $comment;
         }
+
+        if(empty($data)){
+            $flashBag = $this->get('session')->getFlashBag();
+            $flashBag->get('comment-notice');
+            $flashBag->set('comment-notice', 'Aucun commentaire à valider');
+        }
         
         return $this->render('GoMobilityAdminBundle:Comments:index.html.twig', array('experiences'=>$data));
     }

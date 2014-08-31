@@ -4,6 +4,9 @@
     <div class="content">
         <div class="content_content nb_elmt_three content_comment">
             <h4>Commentaires en attente de validation</h4>
+            {% for flashMessage in app.session.flashbag.get('comment-notice') %}
+                <p class="flash-messages">{{ flashMessage }}</p>
+            {% endfor %}
             {% for experienceName, experience in experiences %}
                 <div class="commment_exp">
                     <h5>{{experienceName}}</h2>
