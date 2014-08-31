@@ -9,6 +9,9 @@
                         {% if article.path != null %}<img src="{{asset('bundles/gomobilitysite/images/blog/' ~ article.path)}}">{% endif %}
                         <div class="title">
                             <h4>{{article.title}}</h4>
+                            <div class="fb">
+                                <img src="{{asset('bundles/gomobilitysite/images/lik_bt.jpg')}}">   
+                            </div>
                         </div>
                         {% if article.intro is defined %}
                             <p>{{ article.intro|length > 200 ? article.intro|slice(0, 200) ~ '...' : article.intro  }}</p>
