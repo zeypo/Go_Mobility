@@ -2,6 +2,7 @@
 
 {% block body %}
     <div class="content_creat wrapper">
+        <div id="map" style="display:none;"></div>
     	<div>
 	        <h1>Ajouter une experience</h1>
 	        <ul class="step_control">
@@ -15,7 +16,7 @@
 	            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }} novalidate id="eperience-form">
 	            	<ul>
 	            		<li class="step step1">
-	            			<div class="content_step">		       
+	            			<div class="content_step">
                                 <div>
 						            <p>{{ form_label(form.email) }}</p>
 						            {{ form_widget(form.email)}}
@@ -39,7 +40,7 @@
 						        <div>
 									<p>{{ form_label(form.arrival) }}</p>
 					            	{{ form_widget(form.arrival)}}
-                                    {{ form_errors(form.arrival) }}				      
+                                    {{ form_errors(form.arrival) }}
 					        	</div>
                                 <a href="#" class="step_ca step_prec">Deuxiéme etape</a>
 					        	<a href="#" class="step_ca step_suiv">Troisieme etape</a>

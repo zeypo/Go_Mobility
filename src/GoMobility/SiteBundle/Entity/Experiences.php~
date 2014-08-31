@@ -3,6 +3,8 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Experiences
@@ -11,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="GoMobility\SiteBundle\Entity\ExperiencesRepository")
  */
 class Experiences
-{
+{   
     /**
      * @var integer
      *
@@ -48,6 +50,13 @@ class Experiences
      * @ORM\Column(name="arrival", type="string", length=255)
      */
     private $arrival;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="distance", type="decimal")
+     */
+    private $distance;
 
     /**
      * @var string
@@ -277,8 +286,31 @@ class Experiences
     **/
 
     /**
-     * @ORM\ManyToOne(targetEntity="GoMobility\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="GoMobility\UserBundle\Entity\User", inversedBy="experiences")
      * @ORM\JoinColumn()
      */
     private $user;
+
+    /**
+     * Set user
+     *
+     * @param \GoMobility\UserBundle\Entity\User $user
+     * @return Experiences
+     */
+    public function setUser(\GoMobility\UserBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \GoMobility\UserBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 }
