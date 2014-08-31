@@ -14,12 +14,25 @@ class ExperiencesController extends Controller
     /**
      * Retourne l'ensemble des dernières experiences
      */
-    public function experiencesAction()
+    public function experiencesAction($page)
     {
-        $repository  = $this->getDoctrine()->getEntityManager()->getRepository('GoMobilitySiteBundle:Experiences');
-        $experiences = $repository->findByPublish(1);
+        $maxExperiences = 3;
+        $em             = $this->getDoctrine()->getEntityManager();
+        $repository     = $em->getRepository('GoMobilitySiteBundle:Experiences') ;
+        
+        $experiences       =  $repository->findByPublish(1);
+        $experiences_count = count($experiences);
 
-        return $this->render('GoMobilitySiteBundle:Experiences:vos-experiences.html.twig', array('experiences'=>$experiences));
+        $pagination = array(
+            'page' => $page,
+            'route' => 'go_mobility_site_experiences',
+            'pages_count' => ceil($experiences_count / $maxExperiences),
+            'route_params' => array()
+        );
+        
+        $experiences = $repository->getList($page, $maxExperiences);
+
+        return $this->render('GoMobilitySiteBundle:Experiences:vos-experiences.html.twig', array('experiences'=>$experiences, 'pagination'=>$pagination));
     }
 
     /**

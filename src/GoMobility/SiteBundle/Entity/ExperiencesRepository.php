@@ -3,6 +3,7 @@
 namespace GoMobility\SiteBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * ExperiencesRepository
@@ -12,6 +13,28 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExperiencesRepository extends EntityRepository 
 {
+    /**
+     * Renvoit la pagination pour les experiences
+     *
+     * @param  int    $page
+     * @param  int    $maxperpage
+     * @param  string $sortby
+     * @return Paginator
+     */
+    public function getList($page=1, $maxperpage=2)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('experiences')
+            ->from('GoMobilitySiteBundle:Experiences','experiences')
+            ->where('experiences.publish = 1')
+        ;
+ 
+        $q->setFirstResult(($page-1) * $maxperpage)
+            ->setMaxResults($maxperpage);
+ 
+        return new Paginator($q);
+    }
+
     /**
      * Renvoit les dernières experience ayant pour status publié
      * @param  $nbExperiences

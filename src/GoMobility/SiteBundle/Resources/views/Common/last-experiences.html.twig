@@ -1,15 +1,13 @@
 <div class="last-exp">
-	<h3>Dernieres experiences</h3>
-	<p>‘’Praesent gravida posuere sem, sed congue elit placerat et. Aenean consequat nibh eu leo tincidunt ornare. Morbi scelerisque sapien ac lectus euismod, quis auctor magna tincidunt. Donec aliquet porttitor varius.’’</p>
-	<h4>Lieux associes :</h4>
-	<a href="#"> Park nordic</a><a href="#">Parc du chien nordique</a><a href="#">Cabanes de l'hort de Clastre</a>
+	<h3>Derniere experience</h3>
+	<p>{{experience.description}}</p>
 	<div class="profil">
 		<ul>
 			<li><img src="{{asset('bundles/gomobilitysite/images/img-profil-cody.png')}}"></li>
-			<li><a href="#" class="profil-link">Cody Lambert </a></li>
+			<li><a class="profil-link">{{user.email}} </a></li>
 			<li> 114 au classement </li>
 			<li><a href="#"> 11 Trajets</a></li>
 		</ul>
 	</div>
-	<a href="#" class="bt_more">+</a>
+	<a href="{{path('go_mobility_site_experiences')}}" class="bt_more">+</a>
 </div>
