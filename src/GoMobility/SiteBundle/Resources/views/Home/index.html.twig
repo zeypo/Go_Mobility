@@ -18,7 +18,6 @@
                      <h1>La premiere applicaton eco</h1>
                      <p>Lorem ipsum sit amet, <b>Game</b> adipiscing elit. Viva quis euismod dui tempus.<br> Mauris iaculis neque neque, <b><span>2 450</span> membres</b> tincidunt Proin diam sapien, <b>L’ardeche</b> id metus ac mus id felis urnaUt mattis feugiat</p>
                      <ul>
-                        <li class="bt_game">Acceder au Jeu</li>
                         <li class="bt_app">Telecharger l’application</li>
                      </ul>
                   </div>
@@ -29,6 +28,7 @@
                <p>ivamus id felis urna. Suspendisse volutpat eleifend eleifend. Proin in feugiat nulla.</p>
             </article>
             <article class="map">
+               <a href="{{path('go_mobility_site_experience', {'id':mapexperiences.touristique.id})}}" class="map-see-experience">Voir l'experience</a>
                <div id="map"></div>
                <ul class="nav_map">
                   <li id="nav_map_touriste" class="select">
@@ -77,15 +77,19 @@
          $('.nav_map li').on('click', function()
          {
             var idmap = $(this).attr('id');
+            var $explink = $('.map-see-experience');
             $('.nav_map li').removeClass('select');
             $(this).addClass('select');
             
             if(idmap == 'nav_map_sport'){
                gmaptrace.trace('{{mapexperiences.sport.start}}', '{{mapexperiences.sport.arrival}}', '{{mapexperiences.sport.transport}}')
+               $explink.attr('href', '{{path('go_mobility_site_experience', {'id':mapexperiences.sport.id})}}')
             } else if (idmap == 'nav_map_touriste'){
                gmaptrace.trace('{{mapexperiences.touristique.start}}', '{{mapexperiences.touristique.arrival}}', '{{mapexperiences.touristique.transport}}')
+               $explink.attr('href', '{{path('go_mobility_site_experience', {'id':mapexperiences.touristique.id})}}')
             } else if (idmap == 'nav_map_gowork'){
                gmaptrace.trace('{{mapexperiences.work.start}}', '{{mapexperiences.work.arrival}}', '{{mapexperiences.work.transport}}')
+               $explink.attr('href', '{{path('go_mobility_site_experience', {'id':mapexperiences.work.id})}}')
             }
 
          });

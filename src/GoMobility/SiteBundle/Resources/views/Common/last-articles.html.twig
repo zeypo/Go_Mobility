@@ -3,12 +3,14 @@
 	<section>
 		{% for article in articles %}
 			<article>
-				<img src="{{asset('bundles/gomobilitysite/images/blog/' ~ article.path)}}" class="last-article-img">
-				<div class="content-article">
-					<h4>{{article.title}}</h4>
-					<p>{{ article.content|length > 100 ? article.content|slice(0, 100) ~ '...' : article.content  }}</p>
-					<p><i>{{article.date|date('D M Y')}}</i></p>
-				</div>
+				<a href="{{path('go_mobility_site_actualite', {'id':article.id})}}">
+					<img src="{{asset('bundles/gomobilitysite/images/blog/' ~ article.path)}}" class="last-article-img">
+					<div class="content-article">
+						<h4>{{article.title}}</h4>
+						<p>{{ article.content|length > 100 ? article.content|slice(0, 100) ~ '...' : article.content  }}</p>
+						<p><i>{{article.date|date('D M Y')}}</i></p>
+					</div>
+				</a>
 			</article>
 		{% endfor %}
 	</section>
