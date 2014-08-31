@@ -12,7 +12,7 @@
 	        </ul>
             <div id="errors"></div>
 	        <div class="content_content_creat ">
-	            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }} novalidate>
+	            <form class="form-horizontal" role="form" action="{{ path('go_mobility_site_experiences_create')}}" method="post" {{ form_enctype(form) }} novalidate id="eperience-form">
 	            	<ul>
 	            		<li class="step step1">
 	            			<div class="content_step">		       
@@ -77,8 +77,12 @@
     <script>
         $(function(){
 
-            validate = new expform();
+            var validate  = new expform();
+            var gmapField = new gmapGestion();
             validate.init();
+            
+            gmapField.predicatePlace('gomobility_sitebundle_experiences_start');
+            gmapField.predicatePlace('gomobility_sitebundle_experiences_arrival');
 
         });
     </script>

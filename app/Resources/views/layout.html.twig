@@ -6,7 +6,7 @@
         <title>{% block title %}Go Mobility{% endblock %}</title>
         <meta name="description" content="{% block meta %}{% endblock %}">
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&dummy=.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,200,100,500,600,700,800,900|Montserrat:400,700|Open+Sans:400,600,700|Merriweather:400,700italic,300,700,400italic,300italic' rel='stylesheet' type='text/css'>
         {% block stylesheets %}
             {% stylesheets output="css/style.css" filter="less, cssrewrite"
@@ -20,6 +20,7 @@
                 'bundles/gomobilitysite/js/slide.js'
                 'bundles/gomobilitysite/js/experiences.js'
                 'bundles/gomobilitysite/js/createxp.js'
+                'bundles/gomobilitysite/js/gmap-gestion.js'
                 output="js/compiled/scripts.js" %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
