@@ -52,11 +52,13 @@
 						            {{ form_widget(form.description)}}
 						            {{ form_errors(form.description) }}
 						        </div>
-                                <div>
+                                <div class="input_float">
                                     <p>{{ form_label(form.game) }}</p>
                                     {{ form_widget(form.game)}}
                                 </div>
-                                {{ form_widget(form.envoyer)}}
+                                <div class="submit">                                
+                                	{{ form_widget(form.envoyer)}}
+                                </div>
 				        	</div>
 	            		</li>
 	            	</ul>

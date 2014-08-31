@@ -68,7 +68,7 @@
 					p{
 						margin-bottom: 4px;
 					}
-					a{
+					a, button{
 						margin-top: 20px;
 						color: @GmBlue;
 						border: 1px solid @GmBlue;
@@ -82,14 +82,18 @@
 						background: url(../images/arrow_step_suiv.png) no-repeat center right;
 						right: 0;
 					}
-					a.step_pres{
+					a.step_prec{
 						float: left;
 						padding: 5px 5px 5px 25px;
 						background: url(../images/arrow_step_pres.png) no-repeat center left;
 						left: 0;
-					}
+					}					
 					a:hover{
 						color:@GmBlue;
+					}
+					button{
+						right: 0;
+						background: @White;
 					}
 					input[type="email"],input[type="text"],textarea,select{
 						margin-bottom: 10px;
@@ -107,6 +111,14 @@
 					    -o-appearance: none;
 					    appearance: none;
 					    .border-radius(0px);
+					}
+					.input_float{
+						label{
+							float: left;
+						}
+						input[type="checkbox"]{
+							margin-left: 10px;
+						}
 					}
 				}
 			}
