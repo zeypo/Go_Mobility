@@ -1,12 +1,10 @@
 <div class="last-exp">
 		<h3>Derniere experience</h3>
-		<p>{{experience.description}}</p>
+		<p>{{experience.description|length > 200 ? experience.description|slice(0, 200) ~ '...'}}</p>
 		<div class="profil">
 			<ul>
 				<li><img src="{{asset('bundles/gomobilitysite/images/img-profil-cody.png')}}"></li>
 				<li><a class="profil-link">{{user.email}} </a></li>
-				<li> 114 au classement </li>
-				<li><a href="#"> 11 Trajets</a></li>
 			</ul>
 		</div>
 	<a href="{{path('go_mobility_site_experiences')}}" class="bt_more">+</a>

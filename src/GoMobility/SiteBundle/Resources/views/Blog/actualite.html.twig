@@ -11,16 +11,6 @@
     		<h1>{{article.title}}</h1>
     		{% if article.intro is defined %}<p><span>{{article.intro}}</span></p>{% endif %}
     		<p>{{article.content}}</p>
-	    	<div class="article_mot_clef">
-	    		<h5>Mots clefs associes a l'article :</h5>
-	    		<ul>
-	                <li><a href="#">Baumes</a></li>
-	                <li><a href="#">Eglises</a></li>
-	                <li><a href="#">148 Km</a></li>
-	                <li><a href="#">Villages</a></li>
-	                <li><a href="#">Craux</a></li>
-	    		</ul>
-	    	</div>
 	    	<div class="auteur">
 	    		<img src="{{asset('bundles/gomobilitysite/images/usr_1.jpg')}}">
 	    		<p>{{article.author}}</p>
