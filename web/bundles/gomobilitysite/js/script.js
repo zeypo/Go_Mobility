@@ -120,24 +120,7 @@ function init() {
     var mapElement = document.getElementById('map');
 
     var map = new google.maps.Map(mapElement, mapOptions);
-    var image = '/images/fioritures/picto_map.png';
 
-    var marker = new google.maps.Marker({
-        position: myLatlng,
-        map: map,
-        title: 'AWE',
-        icon : image
-    });
-
-    var infowindow = new google.maps.InfoWindow({
-        content: 'AWE.fr - Advertising & Webmarketing  '
-    });
-
-    //infowindow.open(map,marker);
-
-    google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map,marker);
-    });
 }
 
 

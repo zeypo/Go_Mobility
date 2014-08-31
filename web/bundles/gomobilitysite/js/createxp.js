@@ -17,6 +17,7 @@
         this.$desc        = null;
         this.$erros       = null;
         this.$submit      = null;
+        this.$form        = null;
         this.errors       = [];
         this.select       = 0;
 
@@ -35,6 +36,7 @@
             this.$desc           = $('#gomobility_sitebundle_experiences_description');
             this.$errors         = $('#errors');
             this.$submit         = $('#gomobility_sitebundle_experiences_envoyer');
+            this.$form           = $('#eperience-form');
 
             self.initHtml();
 
@@ -49,6 +51,14 @@
                 if(!self.validateForm()){
                     e.preventDefault();
                     self.showErrors();
+                }
+            })
+
+            self.$form.on('keypress', 'input', function(e)
+            {
+                var key = e.which || e.keyCode;
+                if (key == 13) {
+                    e.preventDefault();
                 }
             })
 
