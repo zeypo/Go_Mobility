@@ -54,6 +54,13 @@ class Experiences
     /**
      * @var string
      *
+     * @ORM\Column(name="distance", type="decimal")
+     */
+    private $distance;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="string")
      */
     private $description;
@@ -305,5 +312,28 @@ class Experiences
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set distance
+     *
+     * @param string $distance
+     * @return Experiences
+     */
+    public function setDistance($distance)
+    {
+        $this->distance = $distance;
+
+        return $this;
+    }
+
+    /**
+     * Get distance
+     *
+     * @return string 
+     */
+    public function getDistance()
+    {
+        return $this->distance;
     }
 }

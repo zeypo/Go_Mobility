@@ -66,15 +66,22 @@ class ExperiencesController extends Controller
                 $user = $userManager->createUser();
                 $user->setUsername($email);
                 $user->setEmail($email);
-                $user->setEmailCanonical(strtolower($email));
                 $user->setPassword('0000');
                 $user->setEnabled(true);
-                $user->addRole('IS_AUTHENTICATED_ANONYMOUSLY');
+                $user->addRole("IS_AUTHENTICATED_ANONYMOUSLY");
 
                 $userManager->updateUser($user);
 
             }
 
+            $start   = str_replace(' ', '%20', $experience->getStart());
+            $arrival = str_replace(' ', '%20', $experience->getArrival());
+            $file = 'https://maps.googleapis.com/maps/api/directions/json?origin='.$start.'&destination='.$arrival.'&key=AIzaSyDVlnjW-_T8eBYRUS4LCE0fTxxmZpNWhrI';
+
+            $json = file_get_contents($file);
+            $jsondata = json_decode($json, true);
+            
+            $experience->setDistance($jsondata['routes'][0]['legs'][0]['distance']['value']);
             $experience->setGes(20);
             $experience->setUser($user);
             $em->persist($experience);

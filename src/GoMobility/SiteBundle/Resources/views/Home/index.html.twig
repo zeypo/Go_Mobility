@@ -31,10 +31,10 @@
             <article class="map">
                <div id="map"></div>
                <ul class="nav_map">
-                  <li id="nav_map_sport" class="select">
-                        <p>Sportif</p>
-                  </li><li id="nav_map_touriste">
+                  <li id="nav_map_touriste" class="select">
                         <p>Touristique</p>
+                  </li><li id="nav_map_sport">
+                        <p>Sportif</p>
                   </li><li id="nav_map_gowork">
                         <p>Go to work</p>
                   </li>
@@ -60,4 +60,37 @@
             </article>
       </section>
    </main>
+{% endblock %}
+
+{% block javascript %}
+
+   {{parent()}}
+
+   <script>
+      $(function(){
+
+         gmaptrace = new gmapGestion();
+         gmaptrace.init();
+
+         gmaptrace.trace('{{mapexperiences.touristique.start}}', '{{mapexperiences.touristique.arrival}}', '{{mapexperiences.touristique.transport}}')
+
+         $('.nav_map li').on('click', function()
+         {
+            var idmap = $(this).attr('id');
+            $('.nav_map li').removeClass('select');
+            $(this).addClass('select');
+            
+            if(idmap == 'nav_map_sport'){
+               gmaptrace.trace('{{mapexperiences.sport.start}}', '{{mapexperiences.sport.arrival}}', '{{mapexperiences.sport.transport}}')
+            } else if (idmap == 'nav_map_touriste'){
+               gmaptrace.trace('{{mapexperiences.touristique.start}}', '{{mapexperiences.touristique.arrival}}', '{{mapexperiences.touristique.transport}}')
+            } else if (idmap == 'nav_map_gowork'){
+               gmaptrace.trace('{{mapexperiences.work.start}}', '{{mapexperiences.work.arrival}}', '{{mapexperiences.work.transport}}')
+            }
+
+         });
+
+      })
+   </script>
+
 {% endblock %}

@@ -31,3 +31,19 @@
     </div>
     <div class="bg_paysage"></div>
 {% endblock %}
+
+{% block javascript %}
+    
+    {{parent()}}
+
+    <script>
+    $(function(){
+
+        gmaptrace = new gmapGestion();
+        gmaptrace.init();
+        gmaptrace.trace('{{experience.start}}', '{{experience.arrival}}', '{{experience.transport}}')
+
+    })
+    </script>
+
+{% endblock %}

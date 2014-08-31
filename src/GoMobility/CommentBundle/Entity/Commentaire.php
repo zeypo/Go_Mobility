@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Commentaire
 {
     /**
-     * @ORM\ManyToOne(targetEntity="GoMobility\SiteBundle\Entity\Experiences")
+     * @ORM\ManyToOne(targetEntity="GoMobility\SiteBundle\Entity\Experiences", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $experience;
