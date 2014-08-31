@@ -16,6 +16,8 @@
             self.myLatlng = new google.maps.LatLng(44.8152705, 4.3737854);
             self.mapElement = document.getElementById('map');
             self.setMapOptions();
+
+            self.map = new google.maps.Map(self.mapElement, self.mapOptions);
         }
 
         this.predicatePlace = function(input)
@@ -28,8 +30,6 @@
         this.trace = function(origin, destination, transport)
         {
             self.travelType = transport;
-            self.map = new google.maps.Map(self.mapElement, self.mapOptions);
-
             var direction = new google.maps.DirectionsRenderer({
                 map   : self.map
             });
@@ -41,18 +41,6 @@
                 self.getDirectionService(self.request, direction);
             }
         };
-
-        this.getDistance = function(origin, destination, transport)
-        {
-            var url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins="+origin+"&destinations="+destination+"&mode="+transport+"&language=fr-FR";
-
-            $.getJSON( url, {
-                format: "json"
-            })
-            .done(function( data ) {
-                console.log(data);
-            })
-        }
 
         this.setRequest = function(origin, destination)
         {
@@ -92,113 +80,6 @@
                 center: self.myLatlng,
                 disableDefaultUI: false,
                 scrollwheel: false,
-
-                styles: [
-                    {
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#ffffff"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.arterial",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#fee379"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "road.highway",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#fee379"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#f3f4f4"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "water",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#7fc8ed"
-                            }
-                        ]
-                    },
-                    {},
-                    {
-                        "featureType": "road",
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "poi.park",
-                        "elementType": "geometry.fill",
-                        "stylers": [
-                            {
-                                "visibility": "on"
-                            },
-                            {
-                                "color": "#83cead"
-                            }
-                        ]
-                    },
-                    {
-                        "elementType": "labels",
-                        "stylers": [
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    },
-                    {
-                        "featureType": "landscape.man_made",
-                        "elementType": "geometry",
-                        "stylers": [
-                            {
-                                "weight": 0.9
-                            },
-                            {
-                                "visibility": "off"
-                            }
-                        ]
-                    }
-                ]
             };
         }
     }

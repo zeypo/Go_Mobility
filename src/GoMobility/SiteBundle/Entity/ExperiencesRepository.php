@@ -55,4 +55,25 @@ class ExperiencesRepository extends EntityRepository
     
         return $q->getResult();
     }
+
+    /**
+     * Renvoit la meilleur experience pour le type de transport demmandé
+     * @param  $transport
+     * @return $experiences
+     */
+    public function getBestExperienceByTransport($transport)
+    {
+        $q = $this->_em->createQueryBuilder()
+            ->select('experiences')
+            ->from('GoMobilitySiteBundle:Experiences','experiences')
+            ->where('experiences.transport = :transport')
+            ->setParameter('transport', $transport)
+            ->add('orderBy', 'experiences.ges DESC')
+            ->getQuery()
+        ;
+    
+        $q->setMaxResults(1);
+    
+        return $q->getResult();
+    }
 }

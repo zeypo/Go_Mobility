@@ -26,15 +26,16 @@
                         <a href="{{path('go_mobility_site_experience', {'id':experience.id})}}">
                             <img src="{{asset('bundles/gomobilitysite/images/usr_1.jpg')}}">                                
                             <ul>
-                                <li>{{experience.start}}</li>
+                                <li>{{ experience.start|length > 15 ? experience.start|slice(0, 15) ~ '...' : experience.start  }}</li>
                                 <li class="trajet">
-                                    <p>140 km</p>
-                                    <div class="bg_list">
+                                    <p>{{experience.distance|number_format(2)|round}} km</p>
+                                    {% set width = experience.distance|number_format(2)|round / 470* 100 %}
+                                    <div class="bg_list" style="width:{{width}}%;">
                                         <div class="start"></div>
                                         <div class="arrival"></div>
                                     </div>
                                 </li>
-                                <li> {{experience.arrival}}</li>
+                                <li>{{ experience.arrival|length > 15 ? experience.arrival|slice(0, 15) ~ '...' : experience.arrival  }}</li>
                             </ul>
                             <p><span>{{experience.ges}}</span> points</p>
                         </a>
