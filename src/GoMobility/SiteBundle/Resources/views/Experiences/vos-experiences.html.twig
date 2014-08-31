@@ -1,10 +1,6 @@
 {% extends "::layout.html.twig" %}
 
 {% block body %}
-    
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        {{ flashMessage }}
-    {% endfor %}
 
     <div class="content_experiences wrapper">
         <div class="org-list">
@@ -20,6 +16,11 @@
             </div>
        </div>
         <div class="content_list">
+
+            {% for flashMessage in app.session.flashbag.get('experience-notice') %}
+                <p class="flash-messages">{{ flashMessage }}</p>
+            {% endfor %}
+
             <ul>
                 {% for experience in experiences %}
                     <li class="{{experience.transport}} traject_entity">

@@ -60,7 +60,7 @@ class ExperiencesController extends Controller
             $experience = $form->getData();
             $email      = $experience->getEmail();
             
-            $user = $userManager->findUserByUsername($email);
+            $user = $userManager->findUserByEmail($email);
 
             if(!$user) {
                 $user = $userManager->createUser();
@@ -81,13 +81,20 @@ class ExperiencesController extends Controller
             $json = file_get_contents($file);
             $jsondata = json_decode($json, true);
             
-            $experience->setDistance($jsondata['routes'][0]['legs'][0]['distance']['value']);
-            $experience->setGes(20);
+            isset($jsondata['routes'][0]['legs'][0]['distance']['value']) ? $experience->setDistance($jsondata['routes'][0]['legs'][0]['distance']['value']) : $experience->setDistance(0);
+
+            // Calcul du ges
+            $likes = rand(1, 100);
+            $ges = $experience->getTransport() != 'sportif' ? $experience->getDistance() * 0.0001 : 1;
+            $ges   = $likes*$ges;
+            
+            $experience->setGes($ges);
             $experience->setUser($user);
             $em->persist($experience);
             $em->flush();
 
-            $this->get('session')->getFlashBag()->add('notice','Votre experience à bien été posté, elle est en attente de confirmation..');
+            $this->get('session')->getFlashBag()->get('experience-notice');
+            $this->get('session')->getFlashBag()->set('experience-notice','Votre experience à bien été posté, elle est en attente de confirmation..');
             return $this->redirect($this->generateUrl('go_mobility_site_experiences'));
         } else {
             throw new \Exception("Formulaire non valide");
