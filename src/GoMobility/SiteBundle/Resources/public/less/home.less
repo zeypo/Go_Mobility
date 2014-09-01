@@ -2,9 +2,13 @@ main{
 	section{
 		background: @GmLightBlue;
 		padding: 150px 0 0 0;
+		.presentation{
+			background: url('../images/presentation-background.jpg') repeat-x bottom;
+		}
 		.wrapper{
 			padding: 100px 0 120px;
 			width: 1400px;
+			background:none;
 			margin: 0 auto;
 			overflow: hidden;
 			position: relative;
@@ -35,12 +39,19 @@ main{
 					}
 					.bt_app{
 						background: @GmBlue;
-						color: @White;		
-						margin-left: 40px;			
+						color: @White;
 					}
 				}
 			}
 		}
+		.last-article-img {
+			width:150px;
+		}
+
+		.blog ul li.blog_container .last-article a {
+			font-weight: 300;
+		}
+		
 		article.title{
 			background:@White;
 			padding: 60px 0;
@@ -73,46 +84,36 @@ main{
 					display: inline-block;
 					width: 33.33%;
 					padding: 0;
-					height: 100px;
+					line-height: 100px;
 					float: left;
 					text-align: center;
-					background: rgba(125, 209, 235, 0.8);
-					color: @White;
+					background: rgba(255, 255, 255, 0.8);				
 					font-size: 16px;
 					cursor: pointer;
-					img{
-						margin-bottom: 10px;
-					}
-					p{
-						padding-top: 65px;
-					}
-				}
-				li.select{
-					background: @GmBeige;
-					color: @GmGray;
-					div{
-						
-					}
-				}
-				li.select svg{
-					fill:@GmGray;
-				}
-				li.select:hover{
-					background: @GmBeige;
-				}
-				li:hover{
-					background: fade(@GmBeige, 60%);
-					color: @GmGray;
-				}
+					text-transform: uppercase;
+					font-weight: bold;
+				}				
 				#nav_map_touriste{
-					background: url(../images/icone-nav-map-touriste.svg) center 15px no-repeat;
+					color: @GmGreen;
+				}
+				#nav_map_touriste.select{
+					background: @GmGreen;
+					color:@White;
 				}
 				#nav_map_sport{
-					background: url(../images/icone-nav-map-sport.svg) center 15px no-repeat;	
+					color: @GmBlue;
+				}
+				#nav_map_sport.select{
+					background: @GmBlue;
+					color:@White;	
 				}
 				#nav_map_gowork{
-					background: url(../images/icone-nav-map-gowork.svg) center 15px no-repeat;
+					color: @GmRed;
 				}
+				#nav_map_gowork.select{
+					background: @GmRed;
+					color:@White;
+				}				
 			}
 		}
 		#twitter{			

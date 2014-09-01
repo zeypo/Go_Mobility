@@ -6339,11 +6339,10 @@ nav ul li a:hover {
   color: #4f5050;
   text-decoration: none;
 }
-nav ul li .active {
-  font-weight: 800;
+nav ul li.active {
   background: #e5e5e5;
 }
-nav ul li .active img {
+nav ul li.active img {
   opacity: 1;
 }
 nav ul li:hover {
@@ -6550,7 +6549,7 @@ table thead th {
   padding-bottom: 20px;
 }
 table thead th:first-child {
-  padding-left: 70px;
+  padding-left: 10px;
 }
 table tr:nth-child(even) {
   background: #f6f6f6;
@@ -6736,4 +6735,14 @@ body .content_admin input[type="submit"] {
 body .content_admin input[type="submit"]:hover {
   background: #7dd1eb;
   color: #ffffff;
+}
+body .add_user {
+  position: absolute;
+  line-height: 40px;
+  width: 100%;
+  bottom: -40px;
+  text-align: center;
+}
+body .add_user a {
+  color: #4f5050;
 }

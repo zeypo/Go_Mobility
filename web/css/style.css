@@ -6303,6 +6303,13 @@ p {
   background: url(../bundles/gomobilitysite/images/presentation-background.jpg) repeat-x bottom;
   padding: 100px 0;
 }
+.flash-messages {
+  padding: 5px 10px;
+  background-color: #91dbbc;
+  color: #fff;
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
 header {
   position: fixed;
   width: 100%;
@@ -6416,10 +6423,12 @@ main section .wrapper .content ul li {
 main section .wrapper .content ul .bt_app {
   background: #7dd1eb;
   color: #ffffff;
-  margin-left: 40px;
 }
 main section .last-article-img {
   width: 150px;
+}
+main section .blog ul li.blog_container .last-article a {
+  font-weight: 300;
 }
 main section article.title {
   background: #ffffff;
@@ -6460,7 +6469,7 @@ main section .map .nav_map li {
   line-height: 100px;
   float: left;
   text-align: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   font-size: 16px;
   cursor: pointer;
   text-transform: uppercase;
@@ -6603,6 +6612,7 @@ main section #twitter .title a {
 }
 .blog ul li.container-last_art .last-article section article .content-article {
   margin-left: 180px;
+  font-family: 'Merriweather', sans-serif;
 }
 .blog ul li.container-last_art .last-article section article .content-article h4 {
   text-transform: uppercase;
@@ -6611,11 +6621,9 @@ main section #twitter .title a {
   font-weight: bold;
 }
 .blog ul li.container-last_art .last-article section article .content-article p {
-  font-family: 'Times New Roman', serif;
   line-height: 30px;
 }
 .blog ul li.container-last_art .last-article section article .content-article i {
-  font-family: 'Open sans', sans-serif;
   font-size: 12px;
   margin-top: 24px;
 }
@@ -7443,6 +7451,26 @@ footer p span {
 }
 .work .score {
   background: #ed7c7b;
+}
+.map-see-experience {
+  display: block;
+  width: 150px;
+  position: absolute;
+  z-index: 200;
+  left: 50%;
+  border-radius: 5px;
+  margin-left: -75px;
+  margin-top: 30px;
+  background-color: #7dd1eb;
+  padding: 10px 0;
+  border: 1px solid #4c94aa;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+}
+.map-see-experience:hover {
+  background-color: #4c94aa;
 }
 @media screen and (max-width: 1500px) {
   main section .wrapper {
