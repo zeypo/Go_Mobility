@@ -46,7 +46,7 @@ class ArticlesRepository extends EntityRepository
             ->select('articles')
             ->from('GoMobilitySiteBundle:Articles','articles')
             ->where('articles.status = 1')
-            ->add('orderBy', 'articles.id ASC')
+            ->add('orderBy', 'articles.id DESC')
             ->getQuery();
         ;
  

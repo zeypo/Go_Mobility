@@ -46,7 +46,7 @@ class ExperiencesRepository extends EntityRepository
             ->select('experiences')
             ->from('GoMobilitySiteBundle:Experiences','experiences')
             ->where('experiences.publish = 1')
-            ->add('orderBy', 'experiences.id ASC')
+            ->add('orderBy', 'experiences.id DESC')
             ->getQuery();
         ;
  
